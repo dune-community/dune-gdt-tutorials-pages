@@ -1,0 +1,611 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="lang:clipboard.copy" content="Copy to clipboard">
+  <meta name="lang:clipboard.copied" content="Copied to clipboard">
+  <meta name="lang:search.language" content="en">
+  <meta name="lang:search.pipeline.stopwords" content="True">
+  <meta name="lang:search.pipeline.trimmer" content="True">
+  <meta name="lang:search.result.none" content="No matching documents">
+  <meta name="lang:search.result.one" content="1 matching document">
+  <meta name="lang:search.result.other" content="# matching documents">
+  <meta name="lang:search.tokenizer" content="[\s\-]+">
+
+  
+    <link href="https://fonts.gstatic.com/" rel="preconnect" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,500,700|Roboto:300,400,400i,700&display=fallback" rel="stylesheet">
+
+    <style>
+      body,
+      input {
+        font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif
+      }
+
+      code,
+      kbd,
+      pre {
+        font-family: "Roboto Mono", "Courier New", Courier, monospace
+      }
+    </style>
+  
+
+  <link rel="stylesheet" href="_static/stylesheets/application.css"/>
+  <link rel="stylesheet" href="_static/stylesheets/application-palette.css"/>
+  <link rel="stylesheet" href="_static/stylesheets/application-fixes.css"/>
+  
+  <link rel="stylesheet" href="_static/fonts/material-icons.css"/>
+  
+  <meta name="theme-color" content="indigo">
+  <script src="_static/javascripts/modernizr.js"></script>
+  
+  
+  
+    <title>Example: prolongations and computing products and norms &#8212; dune-gdt v2021.1.8 Manual</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/material.css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Example: Grid adaptation" href="example__simple_grid_adaptation.html" />
+    <link rel="prev" title="dune-gdt Examples" href="examples.html" />
+  
+   
+
+  </head>
+  <body dir=ltr
+        data-md-color-primary=indigo data-md-color-accent=blue>
+  
+  <svg class="md-svg">
+    <defs data-children-count="0">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+      
+    </defs>
+  </svg>
+  
+  <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer">
+  <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search">
+  <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+  <a href="#example__prolongations_products_and_norms" tabindex="1" class="md-skip"> Skip to content </a>
+  <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex navheader">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="index.html" title="dune-gdt v2021.1.8 Manual"
+           class="md-header-nav__button md-logo">
+          
+            &nbsp;
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          <span class="md-header-nav__topic">Documentation</span>
+          <span class="md-header-nav__topic"> Example: prolongations and computing products and norms </span>
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+        
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" action="search.html" method="get" name="search">
+      <input type="text" class="md-search__input" name="q" placeholder="Search"
+             autocapitalize="off" autocomplete="off" spellcheck="false"
+             data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </div>
+      
+      
+  
+  <script src="_static/javascripts/version_dropdown.js"></script>
+  <script>
+    var json_loc = "/versions.json",
+        target_loc = "../",
+        text = "Versions";
+    $( document ).ready( add_version_dropdown(json_loc, target_loc, text));
+  </script>
+  
+
+    </div>
+  </nav>
+</header>
+
+  
+  <div class="md-container">
+    
+    
+    
+  <nav class="md-tabs" data-md-component="tabs">
+    <div class="md-tabs__inner md-grid">
+      <ul class="md-tabs__list">
+          <li class="md-tabs__item"><a href="index.html" class="md-tabs__link">dune-gdt v2021.1.8 Manual</a></li>
+          <li class="md-tabs__item"><a href="examples.html" class="md-tabs__link">dune-gdt Examples</a></li>
+      </ul>
+    </div>
+  </nav>
+    <main class="md-main">
+      <div class="md-main__inner md-grid" data-md-component="container">
+        
+          <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="index.html" title="dune-gdt v2021.1.8 Manual" class="md-nav__button md-logo">
+      
+        <img src="_static/" alt=" logo" width="48" height="48">
+      
+    </a>
+    <a href="index.html"
+       title="dune-gdt v2021.1.8 Manual">Documentation</a>
+  </label>
+  
+
+  
+  <ul class="md-nav__list">
+    <li class="md-nav__item">
+    
+    
+      <a href="tutorials.html" class="md-nav__link">dune-gdt Tutorials</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="examples.html" class="md-nav__link">dune-gdt Examples</a>
+      <ul class="md-nav__list"> 
+    <li class="md-nav__item">
+    
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    <label class="md-nav__link md-nav__link--active" for="__toc"> Example: prolongations and computing products and norms </label>
+    
+      <a href="#" class="md-nav__link md-nav__link--active">Example: prolongations and computing products and norms</a>
+      
+        
+<nav class="md-nav md-nav--secondary">
+  <ul class="md-nav__list" data-md-scrollfix="">
+  </ul>
+</nav>
+      <ul class="md-nav__list"> 
+    <li class="md-nav__item">
+    
+    
+      <a href="#this-is-work-in-progress-wip-still-missing" class="md-nav__link">This is work in progress (WIP), still missing:</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="#prolongation-onto-a-finer-grid" class="md-nav__link">1: prolongation onto a finer grid</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="#computing-products-and-norms" class="md-nav__link">2: computing products and norms</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="#computing-errors-w-r-t-a-known-reference-solution" class="md-nav__link">3: computing errors w.r.t. a known reference solution</a>
+      
+    
+    </li></ul>
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="example__simple_grid_adaptation.html" class="md-nav__link">Example: Grid adaptation</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="example__ESV2007_estimates.html" class="md-nav__link">Example: a posteriori error estimates based on flux reconstruction</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="example__MNS2002_estimates.html" class="md-nav__link">Example: residual-based a posteriori error estimates</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="example__ipdg_heat_equation.html" class="md-nav__link">Example: SIPDG for the instationary heat equation</a>
+      
+    
+    </li></ul>
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="bibliography.html" class="md-nav__link">Bibliography</a>
+      
+    
+    </li>
+  </ul>
+  
+
+</nav>
+              </div>
+            </div>
+          </div>
+          <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                
+<nav class="md-nav md-nav--secondary">
+  <ul class="md-nav__list" data-md-scrollfix="">
+  </ul>
+</nav>
+              </div>
+            </div>
+          </div>
+        
+        <div class="md-content">
+          <article class="md-content__inner md-typeset" role="main">
+            
+  
+<div class="admonition">
+<p class="admonition-title">Run this tutorial</p>
+<a href="https://mybinder.org/v2/gh/dune-community/dune-gdt-tutorials-pages/add-gdt-tutorials-and-examples?filepath=example__prolongations_products_and_norms.ipynb">Click here</a> to run this tutorial on mybinder.org: <a href="https://mybinder.org/v2/gh/dune-community/dune-gdt-tutorials-pages/add-gdt-tutorials-and-examples?filepath=example__prolongations_products_and_norms.ipynb">
+<img alt="try on mybinder.org" src="https://mybinder.org/badge_logo.svg"/>
+</a><br/>
+<emph>Please note that starting the notebook server may take a couple of minutes.</emph>
+</div>
+<section class="tex2jax_ignore mathjax_ignore" id="example-prolongations-and-computing-products-and-norms">
+<h1 id="example-prolongations-products-and-norms--page-root">Example: prolongations and computing products and norms<a class="headerlink" href="#example-prolongations-products-and-norms--page-root" title="Permalink to this headline">¶</a></h1>
+<section id="this-is-work-in-progress-wip-still-missing">
+<h2 id="this-is-work-in-progress-wip-still-missing">This is work in progress (WIP), still missing:<a class="headerlink" href="#this-is-work-in-progress-wip-still-missing" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>documentation and explanation</p></li>
+<li><p>assembled matrix as product</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># wurlitzer: display dune's output in the notebook</span>
+<span class="o">%</span><span class="k">load_ext</span> wurlitzer
+<span class="o">%</span><span class="k">matplotlib</span> notebook
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">np</span><span class="o">.</span><span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">'ignore'</span><span class="p">)</span> <span class="c1"># silence numpys warnings</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="prolongation-onto-a-finer-grid">
+<h2 id="prolongation-onto-a-finer-grid">1: prolongation onto a finer grid<a class="headerlink" href="#prolongation-onto-a-finer-grid" title="Permalink to this headline">¶</a></h2>
+<p>Let’s set up a 2d grid first, as seen in other tutorials and examples.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dune.xt.grid</span> <span class="kn">import</span> <span class="n">Dim</span><span class="p">,</span> <span class="n">Cube</span><span class="p">,</span> <span class="n">Simplex</span><span class="p">,</span> <span class="n">make_cube_grid</span>
+<span class="kn">from</span> <span class="nn">dune.xt.functions</span> <span class="kn">import</span> <span class="n">ExpressionFunction</span><span class="p">,</span> <span class="n">GridFunction</span> <span class="k">as</span> <span class="n">GF</span>
+
+<span class="n">d</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">omega</span> <span class="o">=</span> <span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">grid</span> <span class="o">=</span> <span class="n">make_cube_grid</span><span class="p">(</span><span class="n">Dim</span><span class="p">(</span><span class="n">d</span><span class="p">),</span> <span class="n">Simplex</span><span class="p">(),</span> <span class="n">lower_left</span><span class="o">=</span><span class="n">omega</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">upper_right</span><span class="o">=</span><span class="n">omega</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">num_elements</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="n">grid</span><span class="o">.</span><span class="n">global_refine</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'grid has </span><span class="si">{</span><span class="n">grid</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="si">}</span><span class="s1"> elements, </span><span class="si">{</span><span class="n">grid</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">d</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="s1"> edges and </span><span class="si">{</span><span class="n">grid</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">d</span><span class="p">)</span><span class="si">}</span><span class="s1"> vertices'</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>grid has 16 elements, 28 edges and 13 vertices
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GridParameterBlock: Parameter 'refinementedge' not specified, defaulting to 'ARBITRARY'.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dune.gdt</span> <span class="kn">import</span> <span class="n">default_interpolation</span><span class="p">,</span> <span class="n">prolong</span><span class="p">,</span> <span class="n">DiscontinuousLagrangeSpace</span>
+
+<span class="n">V_H</span> <span class="o">=</span> <span class="n">DiscontinuousLagrangeSpace</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">f</span> <span class="o">=</span> <span class="n">ExpressionFunction</span><span class="p">(</span><span class="n">dim_domain</span><span class="o">=</span><span class="n">Dim</span><span class="p">(</span><span class="n">d</span><span class="p">),</span> <span class="n">variable</span><span class="o">=</span><span class="s1">'x'</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">expression</span><span class="o">=</span><span class="s1">'exp(x[0]*x[1])'</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">'f'</span><span class="p">)</span>
+<span class="n">f_H</span> <span class="o">=</span> <span class="n">default_interpolation</span><span class="p">(</span><span class="n">GF</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">f</span><span class="p">),</span> <span class="n">V_H</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'f_H has </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">f_H</span><span class="o">.</span><span class="n">dofs</span><span class="o">.</span><span class="n">vector</span><span class="p">)</span><span class="si">}</span><span class="s1"> DoFs'</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>f_H has 48 DoFs
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">reference_grid</span> <span class="o">=</span> <span class="n">make_cube_grid</span><span class="p">(</span><span class="n">Dim</span><span class="p">(</span><span class="n">d</span><span class="p">),</span> <span class="n">Simplex</span><span class="p">(),</span> <span class="n">lower_left</span><span class="o">=</span><span class="n">omega</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">upper_right</span><span class="o">=</span><span class="n">omega</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">num_elements</span><span class="o">=</span><span class="p">[</span><span class="mi">16</span><span class="p">,</span> <span class="mi">16</span><span class="p">])</span>
+<span class="n">reference_grid</span><span class="o">.</span><span class="n">global_refine</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'grid has </span><span class="si">{</span><span class="n">reference_grid</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="si">}</span><span class="s1"> elements'</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>grid has 1024 elements
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GridParameterBlock: Parameter 'refinementedge' not specified, defaulting to 'ARBITRARY'.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dune.gdt</span> <span class="kn">import</span> <span class="n">DiscreteFunction</span>
+
+<span class="n">V_h</span> <span class="o">=</span> <span class="n">DiscontinuousLagrangeSpace</span><span class="p">(</span><span class="n">reference_grid</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">f_h</span> <span class="o">=</span> <span class="n">prolong</span><span class="p">(</span><span class="n">f_H</span><span class="p">,</span> <span class="n">V_h</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'f_h has </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">f_h</span><span class="o">.</span><span class="n">dofs</span><span class="o">.</span><span class="n">vector</span><span class="p">)</span><span class="si">}</span><span class="s1"> DoFs'</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>f_h has 3072 DoFs
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="computing-products-and-norms">
+<h2 id="computing-products-and-norms">2: computing products and norms<a class="headerlink" href="#computing-products-and-norms" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">u</span> <span class="o">=</span> <span class="n">GF</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span>
+       <span class="n">ExpressionFunction</span><span class="p">(</span><span class="n">dim_domain</span><span class="o">=</span><span class="n">Dim</span><span class="p">(</span><span class="n">d</span><span class="p">),</span> <span class="n">variable</span><span class="o">=</span><span class="s1">'x'</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">expression</span><span class="o">=</span><span class="s1">'exp(x[0]*x[1])'</span><span class="p">,</span>
+                          <span class="n">gradient_expressions</span><span class="o">=</span><span class="p">[</span><span class="s1">'x[1]*exp(x[0]*x[1])'</span><span class="p">,</span> <span class="s1">'x[0]*exp(x[0]*x[1])'</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s1">'h'</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="math notranslate nohighlight">
+\[
+(u, v)_{H^1} = (u, v)_{L^2} + (u, v)_{H^1_0}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+||u||_{H^1} = \sqrt{||u||_{L^2}^2 + |u|_{H^1_0}^2}
+\]</div>
+<p>Either comupte all in one grid walk …</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dune.xt.grid</span> <span class="kn">import</span> <span class="n">Walker</span>
+
+<span class="kn">from</span> <span class="nn">dune.gdt</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">BilinearForm</span><span class="p">,</span>
+    <span class="n">LocalElementProductIntegrand</span><span class="p">,</span>
+    <span class="n">LocalElementIntegralBilinearForm</span><span class="p">,</span>
+    <span class="n">LocalLaplaceIntegrand</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">L2_product</span> <span class="o">=</span> <span class="n">BilinearForm</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">u</span><span class="p">)</span>
+<span class="n">L2_product</span> <span class="o">+=</span> <span class="n">LocalElementIntegralBilinearForm</span><span class="p">(</span><span class="n">LocalElementProductIntegrand</span><span class="p">(</span><span class="n">GF</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="mi">1</span><span class="p">)))</span>
+
+<span class="n">H1_semi_product</span> <span class="o">=</span> <span class="n">BilinearForm</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">u</span><span class="p">)</span>
+<span class="n">H1_semi_product</span> <span class="o">+=</span> <span class="n">LocalElementIntegralBilinearForm</span><span class="p">(</span><span class="n">LocalLaplaceIntegrand</span><span class="p">(</span><span class="n">GF</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">dim_range</span><span class="o">=</span><span class="p">(</span><span class="n">Dim</span><span class="p">(</span><span class="n">d</span><span class="p">),</span> <span class="n">Dim</span><span class="p">(</span><span class="n">d</span><span class="p">)))))</span>
+
+<span class="n">H1_product</span> <span class="o">=</span> <span class="n">BilinearForm</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">u</span><span class="p">)</span>
+<span class="n">H1_product</span> <span class="o">+=</span> <span class="n">LocalElementIntegralBilinearForm</span><span class="p">(</span><span class="n">LocalElementProductIntegrand</span><span class="p">(</span><span class="n">GF</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="mi">1</span><span class="p">)))</span>
+<span class="n">H1_product</span> <span class="o">+=</span> <span class="n">LocalElementIntegralBilinearForm</span><span class="p">(</span><span class="n">LocalLaplaceIntegrand</span><span class="p">(</span><span class="n">GF</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">dim_range</span><span class="o">=</span><span class="p">(</span><span class="n">Dim</span><span class="p">(</span><span class="n">d</span><span class="p">),</span> <span class="n">Dim</span><span class="p">(</span><span class="n">d</span><span class="p">)))))</span>
+
+<span class="n">walker</span> <span class="o">=</span> <span class="n">Walker</span><span class="p">(</span><span class="n">grid</span><span class="p">)</span>
+<span class="n">walker</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">L2_product</span><span class="p">)</span>
+<span class="n">walker</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">H1_semi_product</span><span class="p">)</span>
+<span class="n">walker</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">H1_product</span><span class="p">)</span>
+<span class="n">walker</span><span class="o">.</span><span class="n">walk</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'|| u ||_L2 = </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">L2_product</span><span class="o">.</span><span class="n">result</span><span class="p">)</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">' | u |_H1  = </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">H1_semi_product</span><span class="o">.</span><span class="n">result</span><span class="p">)</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'|| u ||_H1 = </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">H1_product</span><span class="o">.</span><span class="n">result</span><span class="p">)</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>|| u ||_L2 = 1.357179337917508
+ | u |_H1  = 1.2638291121558571
+|| u ||_H1 = 1.8545079616984306
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">L2_product</span><span class="o">.</span><span class="n">result</span> <span class="o">+</span> <span class="n">H1_semi_product</span><span class="o">.</span><span class="n">result</span><span class="p">,</span> <span class="n">H1_product</span><span class="o">.</span><span class="n">result</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<p>… or let each product do the grid walking in <code class="docutils literal notranslate"><span class="pre">apply2</span></code> (possibly less runtime efficient, but maybe more intuitive)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">L2_product</span> <span class="o">=</span> <span class="n">BilinearForm</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">u</span><span class="p">)</span>
+<span class="n">L2_product</span> <span class="o">+=</span> <span class="n">LocalElementIntegralBilinearForm</span><span class="p">(</span><span class="n">LocalElementProductIntegrand</span><span class="p">(</span><span class="n">GF</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="mi">1</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'|| u ||_L2 = </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">L2_product</span><span class="o">.</span><span class="n">apply2</span><span class="p">())</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+
+<span class="n">H1_semi_product</span> <span class="o">=</span> <span class="n">BilinearForm</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">u</span><span class="p">)</span>
+<span class="n">H1_semi_product</span> <span class="o">+=</span> <span class="n">LocalElementIntegralBilinearForm</span><span class="p">(</span><span class="n">LocalLaplaceIntegrand</span><span class="p">(</span><span class="n">GF</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">dim_range</span><span class="o">=</span><span class="p">(</span><span class="n">Dim</span><span class="p">(</span><span class="n">d</span><span class="p">),</span> <span class="n">Dim</span><span class="p">(</span><span class="n">d</span><span class="p">)))))</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">' | u |_H1  = </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">H1_semi_product</span><span class="o">.</span><span class="n">apply2</span><span class="p">())</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+
+<span class="n">H1_product</span> <span class="o">=</span> <span class="n">BilinearForm</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">u</span><span class="p">)</span>
+<span class="n">H1_product</span> <span class="o">+=</span> <span class="n">LocalElementIntegralBilinearForm</span><span class="p">(</span><span class="n">LocalElementProductIntegrand</span><span class="p">(</span><span class="n">GF</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="mi">1</span><span class="p">)))</span>
+<span class="n">H1_product</span> <span class="o">+=</span> <span class="n">LocalElementIntegralBilinearForm</span><span class="p">(</span><span class="n">LocalLaplaceIntegrand</span><span class="p">(</span><span class="n">GF</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">dim_range</span><span class="o">=</span><span class="p">(</span><span class="n">Dim</span><span class="p">(</span><span class="n">d</span><span class="p">),</span> <span class="n">Dim</span><span class="p">(</span><span class="n">d</span><span class="p">)))))</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'|| u ||_H1 = </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">H1_product</span><span class="o">.</span><span class="n">apply2</span><span class="p">())</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>|| u ||_L2 = 1.357179337917508
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> | u |_H1  = 1.2638291121558571
+|| u ||_H1 = 1.8545079616984306
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="computing-errors-w-r-t-a-known-reference-solution">
+<h2 id="computing-errors-w-r-t-a-known-reference-solution">3: computing errors w.r.t. a known reference solution<a class="headerlink" href="#computing-errors-w-r-t-a-known-reference-solution" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># suppose we have a DiscreteFunction on a coarse grid, usually the solution of a discretization</span>
+<span class="c1"># (we use the interpolation here for simplicity)</span>
+
+<span class="n">u_H</span> <span class="o">=</span> <span class="n">default_interpolation</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">V_H</span><span class="p">)</span>
+
+<span class="c1"># prolong it onto the reference grid</span>
+<span class="n">u_h</span> <span class="o">=</span> <span class="n">prolong</span><span class="p">(</span><span class="n">u_H</span><span class="p">,</span> <span class="n">V_h</span><span class="p">)</span>
+
+<span class="c1"># define error function using the analytically known solution u</span>
+<span class="n">error</span> <span class="o">=</span> <span class="n">GF</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">u</span> <span class="o">-</span> <span class="n">u_h</span><span class="p">)</span>
+
+<span class="c1"># compute norms on reference grid</span>
+<span class="n">L2_product</span> <span class="o">=</span> <span class="n">BilinearForm</span><span class="p">(</span><span class="n">reference_grid</span><span class="p">,</span> <span class="n">error</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span>
+<span class="n">L2_product</span> <span class="o">+=</span> <span class="n">LocalElementIntegralBilinearForm</span><span class="p">(</span><span class="n">LocalElementProductIntegrand</span><span class="p">(</span><span class="n">GF</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="mi">1</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'|| error ||_L2 = </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">L2_product</span><span class="o">.</span><span class="n">apply2</span><span class="p">())</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>|| error ||_L2 = 0.02215546188074599
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<script type="application/vnd.jupyter.widget-state+json">
+{"state": {"020326e4662d4961aac1a6da4794af01": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "DescriptionStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "02650524d6f441a79b5b75256fef8538": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "DescriptionStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "02f20eb0ca3340b2b06d31cc0b262197": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "AccordionModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "AccordionModel", "_titles": {"0": "Log Output"}, "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "AccordionView", "box_style": "", "children": ["IPY_MODEL_a1f522895c4844a19a9246b5a74f9741"], "layout": "IPY_MODEL_4414192883f04a47b3dd98821a67319b", "selected_index": null}}, "12fce84b75bc4a2ba00bb01590804508": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HTMLModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_caecf33076294f03baf562f8d33c1b12", "placeholder": "\u200b", "style": "IPY_MODEL_209d21ae623d4858a61a825379077fea", "value": ""}}, "1512484d78954e60bce512722d5b64ac": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "17f810735ed44a9ab0946a68f1e58a6c": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "DescriptionStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "1962f74299e24ae7bf6282f2cd6784d1": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "AccordionModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "AccordionModel", "_titles": {"0": "Log Output"}, "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "AccordionView", "box_style": "", "children": ["IPY_MODEL_12fce84b75bc4a2ba00bb01590804508"], "layout": "IPY_MODEL_2940f7e906424fcc9b0d036cc96f6b0a", "selected_index": null}}, "1a77d9252dd04df898e77d1539d355b8": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "AccordionModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "AccordionModel", "_titles": {"0": "Log Output"}, "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "AccordionView", "box_style": "", "children": ["IPY_MODEL_c3ac834a231d413f8ef263ff1df2c20f"], "layout": "IPY_MODEL_355802d6ad624f0faa67ac56bdf6444d", "selected_index": null}}, "1f82824594a94ba988e8ed93692218f7": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "AccordionModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "AccordionModel", "_titles": {"0": "Log Output"}, "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "AccordionView", "box_style": "", "children": ["IPY_MODEL_2442c48f68b740cea09d4a76fe752e3e"], "layout": "IPY_MODEL_b1665a8bba4f462cb2db444fc8dfe27d", "selected_index": null}}, "209d21ae623d4858a61a825379077fea": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "DescriptionStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "23002e39cd1f45e48aa0a89d0ffc338b": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "236f385677164e6f8515a04dd7bb4f40": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HTMLModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_eede5154ff0a41e4b72418aac8a3a762", "placeholder": "\u200b", "style": "IPY_MODEL_6e0719f9e2384d6ba94e77670e5b9bf1", "value": ""}}, "2442c48f68b740cea09d4a76fe752e3e": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HTMLModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_a700d369aecc4e5a8cbee40809d11468", "placeholder": "\u200b", "style": "IPY_MODEL_a36d616a6e6d4f2ca97768c1e298a20b", "value": ""}}, "252774ca7fed4e09b70592cfc35a2c90": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "25c89c88fb9d45cebe8b8b0ad9560128": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HTMLModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_fbd8159989644ddd968a6057a44fe8e6", "placeholder": "\u200b", "style": "IPY_MODEL_41ceb994256c4eb5a00514a3c116f35b", "value": ""}}, "2940f7e906424fcc9b0d036cc96f6b0a": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "32fc89db50984a16b131fdc1bafec516": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "16em", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "auto", "padding": null, "right": null, "top": null, "visibility": null, "width": "100%"}}, "355802d6ad624f0faa67ac56bdf6444d": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "39b3e57a7c7e4015a42f052534dc3170": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "3c8a88dcc79d44c6993cf9c22feec1f9": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "DescriptionStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "3e4d57233ba448599d395818f38c3810": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "16em", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "auto", "padding": null, "right": null, "top": null, "visibility": null, "width": "100%"}}, "41ceb994256c4eb5a00514a3c116f35b": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "DescriptionStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "42e9bdf41c814e80b40a2c7dd5f8483d": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HTMLModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_7baebd49acfb4c6c97b3b2fb91b7c6b0", "placeholder": "\u200b", "style": "IPY_MODEL_a377ce8554b640b09a03163266961992", "value": ""}}, "4414192883f04a47b3dd98821a67319b": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "49b74eec8ddd47e28680d21b7b94020c": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "16em", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "auto", "padding": null, "right": null, "top": null, "visibility": null, "width": "100%"}}, "518d7527c0884cba80c2894422087dd9": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "AccordionModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "AccordionModel", "_titles": {"0": "Log Output"}, "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "AccordionView", "box_style": "", "children": ["IPY_MODEL_72f6ac62d0cd4150b579a826cdbed90d"], "layout": "IPY_MODEL_23002e39cd1f45e48aa0a89d0ffc338b", "selected_index": null}}, "5d184420202a4023a976805e77edf0f4": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "AccordionModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "AccordionModel", "_titles": {"0": "Log Output"}, "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "AccordionView", "box_style": "", "children": ["IPY_MODEL_236f385677164e6f8515a04dd7bb4f40"], "layout": "IPY_MODEL_39b3e57a7c7e4015a42f052534dc3170", "selected_index": null}}, "5d4811f8d4a144d2abec1353ab489f1e": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "AccordionModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "AccordionModel", "_titles": {"0": "Log Output"}, "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "AccordionView", "box_style": "", "children": ["IPY_MODEL_d28e08c32ffb46038468cedeedd5c955"], "layout": "IPY_MODEL_252774ca7fed4e09b70592cfc35a2c90", "selected_index": null}}, "6e0719f9e2384d6ba94e77670e5b9bf1": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "DescriptionStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "72f6ac62d0cd4150b579a826cdbed90d": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HTMLModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_a7de28e998914739a0fd75feba0739e6", "placeholder": "\u200b", "style": "IPY_MODEL_3c8a88dcc79d44c6993cf9c22feec1f9", "value": ""}}, "7721ad9798ae413ca2fdeb1e17c09a6d": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "DescriptionStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "7baebd49acfb4c6c97b3b2fb91b7c6b0": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "16em", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "auto", "padding": null, "right": null, "top": null, "visibility": null, "width": "100%"}}, "7dc22f5a72ed4675acabe1c01d284c58": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "16em", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "auto", "padding": null, "right": null, "top": null, "visibility": null, "width": "100%"}}, "a1f522895c4844a19a9246b5a74f9741": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HTMLModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_3e4d57233ba448599d395818f38c3810", "placeholder": "\u200b", "style": "IPY_MODEL_7721ad9798ae413ca2fdeb1e17c09a6d", "value": ""}}, "a36d616a6e6d4f2ca97768c1e298a20b": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "DescriptionStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "a377ce8554b640b09a03163266961992": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "DescriptionStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "a700d369aecc4e5a8cbee40809d11468": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "16em", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "auto", "padding": null, "right": null, "top": null, "visibility": null, "width": "100%"}}, "a7de28e998914739a0fd75feba0739e6": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "16em", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "auto", "padding": null, "right": null, "top": null, "visibility": null, "width": "100%"}}, "b00203e0e5414b6089c6909f8c4f04a1": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "AccordionModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "AccordionModel", "_titles": {"0": "Log Output"}, "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "AccordionView", "box_style": "", "children": ["IPY_MODEL_bcce7a97c02c48a7ab3b39da89c5b9a5"], "layout": "IPY_MODEL_1512484d78954e60bce512722d5b64ac", "selected_index": null}}, "b14a37c0002c44bcaceffc2ab3539e54": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "16em", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "auto", "padding": null, "right": null, "top": null, "visibility": null, "width": "100%"}}, "b1665a8bba4f462cb2db444fc8dfe27d": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "b28a78548bec412aa35c04e669350eae": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "AccordionModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "AccordionModel", "_titles": {"0": "Log Output"}, "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "AccordionView", "box_style": "", "children": ["IPY_MODEL_25c89c88fb9d45cebe8b8b0ad9560128"], "layout": "IPY_MODEL_b2986757df134b47b2f0e92c5eee8312", "selected_index": null}}, "b2986757df134b47b2f0e92c5eee8312": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "bc9e6885ad2b436bb20dfc872481e620": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HTMLModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_7dc22f5a72ed4675acabe1c01d284c58", "placeholder": "\u200b", "style": "IPY_MODEL_c53b5af1c6b043eab0b35aac9acbc56a", "value": ""}}, "bcce7a97c02c48a7ab3b39da89c5b9a5": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HTMLModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_49b74eec8ddd47e28680d21b7b94020c", "placeholder": "\u200b", "style": "IPY_MODEL_02650524d6f441a79b5b75256fef8538", "value": ""}}, "bfe3b3c625774468858fde881c8a14bf": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "AccordionModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "AccordionModel", "_titles": {"0": "Log Output"}, "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "AccordionView", "box_style": "", "children": ["IPY_MODEL_42e9bdf41c814e80b40a2c7dd5f8483d"], "layout": "IPY_MODEL_e8e72b71d56c44a5b076cd5a348f42a6", "selected_index": null}}, "c3ac834a231d413f8ef263ff1df2c20f": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HTMLModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_b14a37c0002c44bcaceffc2ab3539e54", "placeholder": "\u200b", "style": "IPY_MODEL_020326e4662d4961aac1a6da4794af01", "value": ""}}, "c53b5af1c6b043eab0b35aac9acbc56a": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "DescriptionStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "caecf33076294f03baf562f8d33c1b12": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "16em", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "auto", "padding": null, "right": null, "top": null, "visibility": null, "width": "100%"}}, "cf9043eb8ee4490c8e9a63aa9653fadb": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "AccordionModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "AccordionModel", "_titles": {"0": "Log Output"}, "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "AccordionView", "box_style": "", "children": ["IPY_MODEL_bc9e6885ad2b436bb20dfc872481e620"], "layout": "IPY_MODEL_dd42673e89ce4885a83ababece480786", "selected_index": null}}, "d28e08c32ffb46038468cedeedd5c955": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HTMLModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_32fc89db50984a16b131fdc1bafec516", "placeholder": "\u200b", "style": "IPY_MODEL_17f810735ed44a9ab0946a68f1e58a6c", "value": ""}}, "dd42673e89ce4885a83ababece480786": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "e8e72b71d56c44a5b076cd5a348f42a6": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "eede5154ff0a41e4b72418aac8a3a762": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "16em", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "auto", "padding": null, "right": null, "top": null, "visibility": null, "width": "100%"}}, "fbd8159989644ddd968a6057a44fe8e6": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "16em", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "auto", "padding": null, "right": null, "top": null, "visibility": null, "width": "100%"}}}, "version_major": 2, "version_minor": 0}
+</script>
+
+
+          </article>
+        </div>
+      </div>
+    </main>
+  </div>
+  <footer class="md-footer">
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+          
+            <a href="examples.html" title="dune-gdt Examples"
+               class="md-flex md-footer-nav__link md-footer-nav__link--prev"
+               rel="prev">
+              <div class="md-flex__cell md-flex__cell--shrink">
+                <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+              </div>
+              <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+                <span class="md-flex__ellipsis">
+                  <span
+                      class="md-footer-nav__direction"> Previous </span> dune-gdt Examples </span>
+              </div>
+            </a>
+          
+          
+            <a href="example__simple_grid_adaptation.html" title="Example: Grid adaptation"
+               class="md-flex md-footer-nav__link md-footer-nav__link--next"
+               rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span
+                class="md-flex__ellipsis"> <span
+                class="md-footer-nav__direction"> Next </span> Example: Grid adaptation </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink"><i
+                class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          
+        </a>
+        
+      </nav>
+    </div>
+    <div class="md-footer-meta md-typeset">
+      <div class="md-footer-meta__inner md-grid">
+        <div class="md-footer-copyright">
+          <div class="md-footer-copyright__highlight">
+              &#169; Copyright 2013-2021 dune-gdt developers and contributors.
+              
+          </div>
+            Last updated on
+              Feb 14, 2022.
+            <br/>
+            Created using
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> 4.3.1.
+             and
+            <a href="https://github.com/bashtage/sphinx-material/">Material for
+              Sphinx</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="_static/javascripts/application.js"></script>
+  <script>app.initialize({version: "1.0.4", url: {base: ".."}})</script>
+  </body>
+</html>

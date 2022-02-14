@@ -1,0 +1,370 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="lang:clipboard.copy" content="Copy to clipboard">
+  <meta name="lang:clipboard.copied" content="Copied to clipboard">
+  <meta name="lang:search.language" content="en">
+  <meta name="lang:search.pipeline.stopwords" content="True">
+  <meta name="lang:search.pipeline.trimmer" content="True">
+  <meta name="lang:search.result.none" content="No matching documents">
+  <meta name="lang:search.result.one" content="1 matching document">
+  <meta name="lang:search.result.other" content="# matching documents">
+  <meta name="lang:search.tokenizer" content="[\s\-]+">
+
+  
+    <link href="https://fonts.gstatic.com/" rel="preconnect" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,500,700|Roboto:300,400,400i,700&display=fallback" rel="stylesheet">
+
+    <style>
+      body,
+      input {
+        font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif
+      }
+
+      code,
+      kbd,
+      pre {
+        font-family: "Roboto Mono", "Courier New", Courier, monospace
+      }
+    </style>
+  
+
+  <link rel="stylesheet" href="_static/stylesheets/application.css"/>
+  <link rel="stylesheet" href="_static/stylesheets/application-palette.css"/>
+  <link rel="stylesheet" href="_static/stylesheets/application-fixes.css"/>
+  
+  <link rel="stylesheet" href="_static/fonts/material-icons.css"/>
+  
+  <meta name="theme-color" content="indigo">
+  <script src="_static/javascripts/modernizr.js"></script>
+  
+  
+  
+    <title>dune-gdt &#8212; dune-gdt v2021.1.8 Manual</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/material.css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="dune-gdt Tutorials" href="tutorials.html" />
+  
+   
+
+  </head>
+  <body dir=ltr
+        data-md-color-primary=indigo data-md-color-accent=blue>
+  
+  <svg class="md-svg">
+    <defs data-children-count="0">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+      
+    </defs>
+  </svg>
+  
+  <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer">
+  <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search">
+  <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+  <a href="#index" tabindex="1" class="md-skip"> Skip to content </a>
+  <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex navheader">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="#" title="dune-gdt v2021.1.8 Manual"
+           class="md-header-nav__button md-logo">
+          
+            &nbsp;
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          <span class="md-header-nav__topic">Documentation</span>
+          <span class="md-header-nav__topic"> dune-gdt </span>
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+        
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" action="search.html" method="get" name="search">
+      <input type="text" class="md-search__input" name="q" placeholder="Search"
+             autocapitalize="off" autocomplete="off" spellcheck="false"
+             data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </div>
+      
+      
+  
+  <script src="_static/javascripts/version_dropdown.js"></script>
+  <script>
+    var json_loc = "/versions.json",
+        target_loc = "../",
+        text = "Versions";
+    $( document ).ready( add_version_dropdown(json_loc, target_loc, text));
+  </script>
+  
+
+    </div>
+  </nav>
+</header>
+
+  
+  <div class="md-container">
+    
+    
+    
+  <nav class="md-tabs" data-md-component="tabs">
+    <div class="md-tabs__inner md-grid">
+      <ul class="md-tabs__list">
+          <li class="md-tabs__item"><a href="#" class="md-tabs__link">dune-gdt v2021.1.8 Manual</a></li>
+      </ul>
+    </div>
+  </nav>
+    <main class="md-main">
+      <div class="md-main__inner md-grid" data-md-component="container">
+        
+          <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="#" title="dune-gdt v2021.1.8 Manual" class="md-nav__button md-logo">
+      
+        <img src="_static/" alt=" logo" width="48" height="48">
+      
+    </a>
+    <a href="#"
+       title="dune-gdt v2021.1.8 Manual">Documentation</a>
+  </label>
+  
+
+  
+  <ul class="md-nav__list">
+    <li class="md-nav__item">
+    
+    
+      <a href="tutorials.html" class="md-nav__link">dune-gdt Tutorials</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="examples.html" class="md-nav__link">dune-gdt Examples</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="bibliography.html" class="md-nav__link">Bibliography</a>
+      
+    
+    </li>
+  </ul>
+  
+
+</nav>
+              </div>
+            </div>
+          </div>
+          <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                
+<nav class="md-nav md-nav--secondary">
+  <ul class="md-nav__list" data-md-scrollfix="">
+  </ul>
+</nav>
+              </div>
+            </div>
+          </div>
+        
+        <div class="md-content">
+          <article class="md-content__inner md-typeset" role="main">
+            
+  <section class="tex2jax_ignore mathjax_ignore" id="dune-gdt">
+<h1 id="index--page-root">dune-gdt<a class="headerlink" href="#index--page-root" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">dune-gdt Tutorials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_basic.html">Tutorial:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial-05__data_functions_and_interpolation.html">Tutorial 05 [WIP]: data functions and interpolation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tutorial-05__data_functions_and_interpolation.html#this-is-work-in-progress-wip-still-missing">This is work in progress (WIP), still missing:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial-05__data_functions_and_interpolation.html#creating-functions">1: creating functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial-05__data_functions_and_interpolation.html#using-the-constantfunction">1.1: using the <code class="docutils literal notranslate"><span class="pre">ConstantFunction</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial-05__data_functions_and_interpolation.html#using-the-expressionfunction">1.2: using the <code class="docutils literal notranslate"><span class="pre">ExpressionFunction</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial-05__data_functions_and_interpolation.html#discrete-functions">1.3: discrete functions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial-05__data_functions_and_interpolation.html#visualizing-functions">2: visualizing functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tutorial-05__data_functions_and_interpolation.html#visualizing-scalar-functions-in-2d">2.1: visualizing scalar functions in 2d</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial-05__data_functions_and_interpolation.html#visualizing-functions-in-other-dimensions">2.2: visualizing functions in other dimensions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial-05__data_functions_and_interpolation.html#the-gridfunction">3: The <code class="docutils literal notranslate"><span class="pre">GridFunction</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tutorial-05__data_functions_and_interpolation.html#visualizing-grid-functions-in-all-dimension">3.1: visualizing grid functions in all dimension</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial-05__data_functions_and_interpolation.html#interpolation">4: interpolation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tutorial-05__data_functions_and_interpolation.html#using-dune-gdts-interpolation">4.1: using <code class="docutils literal notranslate"><span class="pre">dune-gdt</span></code>s interpolation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial-05__data_functions_and_interpolation.html#using-vectorized-python-code">4.2: using vectorized Python code</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial-05__data_functions_and_interpolation.html#performance-considerations">5: performance considerations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tutorial-05__data_functions_and_interpolation.html#interpolation-test">5.1: interpolation test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial-05__data_functions_and_interpolation.html#discretization-test">5.2: discretization test</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial-10__cg_stationary_heat_equation_dirichlet.html">Tutorial 10 [WIP]: continuous FEM for the stationary heat equation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tutorial-10__cg_stationary_heat_equation_dirichlet.html#this-is-work-in-progress-wip-still-missing">This is work in progress (WIP), still missing:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial-10__cg_stationary_heat_equation_dirichlet.html#diffusion-with-homogeneous-dirichlet-boundary-condition">1: diffusion with homogeneous Dirichlet boundary condition</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tutorial-10__cg_stationary_heat_equation_dirichlet.html#analytical-problem">1.1: analytical problem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial-10__cg_stationary_heat_equation_dirichlet.html#continuous-finite-elements">1.2: continuous Finite Elements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial-10__cg_stationary_heat_equation_dirichlet.html#approximate-functionals">1.3: approximate functionals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial-10__cg_stationary_heat_equation_dirichlet.html#approximate-bilinear-forms">1.4: approximate bilinear forms</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial-10__cg_stationary_heat_equation_dirichlet.html#handling-the-dirichlet-boundary-condition">1.5: handling the Dirichlet boundary condition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial-10__cg_stationary_heat_equation_dirichlet.html#walking-the-grid">1.6: walking the grid</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial-10__cg_stationary_heat_equation_dirichlet.html#solving-the-linear-system">1.7: solving the linear system</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial-10__cg_stationary_heat_equation_dirichlet.html#postprocessing-the-solution">1.8: postprocessing the solution</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial-10__cg_stationary_heat_equation_dirichlet.html#everything-in-a-single-function">1.9: everything in a single function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial-10__cg_stationary_heat_equation_dirichlet.html#diffusion-with-non-homogeneous-dirichlet-boundary-condition">2: diffusion with non-homogeneous Dirichlet boundary condition</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tutorial-10__cg_stationary_heat_equation_dirichlet.html#id1">2.1: analytical problem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial-10__cg_stationary_heat_equation_dirichlet.html#dirichlet-shift">2.2: Dirichlet shift</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial-10__cg_stationary_heat_equation_dirichlet.html#dirichlet-interpolation">2.3: Dirichlet interpolation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial-10__cg_stationary_heat_equation_dirichlet.html#assembling-the-shifted-system">2.4: assembling the shifted system</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial-10__cg_stationary_heat_equation_dirichlet.html#id2">2.5: everything in a single function</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial-20__ipdg_stationary_heat_equation_dirichlet.html">Tutorial 20 [WIP]: discontinuous IPDG for the stationary heat equation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tutorial-20__ipdg_stationary_heat_equation_dirichlet.html#this-is-work-in-progress-wip-still-missing">This is work in progress (WIP), still missing:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial-20__ipdg_stationary_heat_equation_dirichlet.html#everything-in-a-single-function">1.9: everything in a single function</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">dune-gdt Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="example__prolongations_products_and_norms.html">Example: prolongations and computing products and norms</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="example__prolongations_products_and_norms.html#this-is-work-in-progress-wip-still-missing">This is work in progress (WIP), still missing:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="example__prolongations_products_and_norms.html#prolongation-onto-a-finer-grid">1: prolongation onto a finer grid</a></li>
+<li class="toctree-l3"><a class="reference internal" href="example__prolongations_products_and_norms.html#computing-products-and-norms">2: computing products and norms</a></li>
+<li class="toctree-l3"><a class="reference internal" href="example__prolongations_products_and_norms.html#computing-errors-w-r-t-a-known-reference-solution">3: computing errors w.r.t. a known reference solution</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="example__simple_grid_adaptation.html">Example: Grid adaptation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="example__simple_grid_adaptation.html#keeping-track-of-refined-elements">keeping track of refined elements</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="example__ESV2007_estimates.html">Example: a posteriori error estimates based on flux reconstruction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example__MNS2002_estimates.html">Example: residual-based a posteriori error estimates</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="example__MNS2002_estimates.html#inspect-grid-properties-and-relations-between-elements-and-intersections">1: inspect grid properties and relations between elements and intersections</a></li>
+<li class="toctree-l3"><a class="reference internal" href="example__MNS2002_estimates.html#solving-an-elliptic-pde">2: solving an elliptic PDE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="example__MNS2002_estimates.html#computing-the-a-posterior-error-estimates-and-indicators-from-mns2002">3: computing the a posterior error estimates and indicators from [MNS2002]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="example__MNS2002_estimates.html#data-oscialltion">4: data oscialltion</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="example__ipdg_heat_equation.html">Example: SIPDG for the instationary heat equation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="example__ipdg_heat_equation.html#this-is-work-in-progress-wip-still-missing">This is work in progress (WIP), still missing:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="example__ipdg_heat_equation.html#stationary-data-functions">stationary data functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="example__ipdg_heat_equation.html#timedependent-right-hand-side">timedependent right hand side</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="bibliography.html">Bibliography</a></li>
+</ul>
+</div>
+</section>
+
+
+          </article>
+        </div>
+      </div>
+    </main>
+  </div>
+  <footer class="md-footer">
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+          
+          
+            <a href="tutorials.html" title="dune-gdt Tutorials"
+               class="md-flex md-footer-nav__link md-footer-nav__link--next"
+               rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span
+                class="md-flex__ellipsis"> <span
+                class="md-footer-nav__direction"> Next </span> dune-gdt Tutorials </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink"><i
+                class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          
+        </a>
+        
+      </nav>
+    </div>
+    <div class="md-footer-meta md-typeset">
+      <div class="md-footer-meta__inner md-grid">
+        <div class="md-footer-copyright">
+          <div class="md-footer-copyright__highlight">
+              &#169; Copyright 2013-2021 dune-gdt developers and contributors.
+              
+          </div>
+            Last updated on
+              Feb 14, 2022.
+            <br/>
+            Created using
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> 4.3.1.
+             and
+            <a href="https://github.com/bashtage/sphinx-material/">Material for
+              Sphinx</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="_static/javascripts/application.js"></script>
+  <script>app.initialize({version: "1.0.4", url: {base: ".."}})</script>
+  </body>
+</html>
