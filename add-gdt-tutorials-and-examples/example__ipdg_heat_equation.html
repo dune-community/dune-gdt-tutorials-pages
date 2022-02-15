@@ -1,69 +1,238 @@
+<!doctype html>
+<html class="no-js">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Bibliography" href="bibliography.html" /><link rel="prev" title="Example: residual-based a posteriori error estimates" href="example__MNS2002_estimates.html" />
 
-<!DOCTYPE html>
-
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
-    <title>Example: SIPDG for the instationary heat equation &#8212; dune-gdt v2021.1.8 Manual</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <meta name="generator" content="sphinx-4.3.1, furo 2022.02.14.1"/>
+        <title>Example: SIPDG for the instationary heat equation - dune-gdt v2021.1.8 Manual</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=a8f031f701c6af50c9919b48f173a5785af06fac" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Bibliography" href="bibliography.html" />
-    <link rel="prev" title="Example: residual-based a posteriori error estimates" href="example__MNS2002_estimates.html" />
-   
-  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
-  
-  
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=25ceb02ed1c46dc30f2321ff83e92799f69dfdb9" />
+    
+    
 
-  </head><body>
-  
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
+<style>
+  body {
+    --color-code-background: #eeffcc;
+  --color-code-foreground: black;
+  
+  }
+  body[data-theme="dark"] {
+    --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+  }
+  @media (prefers-color-scheme: dark) {
+    body:not([data-theme="light"]) {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+  }
+</style></head>
+  <body>
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="index.html"><div class="brand">dune-gdt v2021.1.8 Manual</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><div class="sidebar-tree">
+  <ul class="current">
+<li class="toctree-l1 has-children"><a class="reference internal" href="tutorials.html">Tutorials</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="tutorial-05__data_functions_and_interpolation.html">Tutorial 05 [WIP]: data functions and interpolation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial-05__data_functions_and_interpolation.html#visualizing-functions">2: visualizing functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial-05__data_functions_and_interpolation.html#the-gridfunction">3: The <code class="docutils literal notranslate"><span class="pre">GridFunction</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial-05__data_functions_and_interpolation.html#interpolation">4: interpolation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial-05__data_functions_and_interpolation.html#performance-considerations">5: performance considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial-10__cg_stationary_heat_equation_dirichlet.html">Tutorial 10 [WIP]: continuous FEM for the stationary heat equation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial-10__cg_stationary_heat_equation_dirichlet.html#diffusion-with-homogeneous-dirichlet-boundary-condition">1: diffusion with homogeneous Dirichlet boundary condition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial-10__cg_stationary_heat_equation_dirichlet.html#everything-in-a-single-function">1.9: everything in a single function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial-10__cg_stationary_heat_equation_dirichlet.html#diffusion-with-non-homogeneous-dirichlet-boundary-condition">2: diffusion with non-homogeneous Dirichlet boundary condition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial-20__ipdg_stationary_heat_equation_dirichlet.html">Tutorial 20 [WIP]: discontinuous IPDG for the stationary heat equation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial-20__ipdg_stationary_heat_equation_dirichlet.html#everything-in-a-single-function">1.9: everything in a single function</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="examples.html">Examples</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="example__prolongations_products_and_norms.html">Example: prolongations and computing products and norms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example__simple_grid_adaptation.html">Example: Grid adaptation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example__ESV2007_estimates.html">Example: a posteriori error estimates based on flux reconstruction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example__gmsh_grid.html">Example: working with gmsh grids</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example__MNS2002_estimates.html">Example: residual-based a posteriori error estimates</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Example: SIPDG for the instationary heat equation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="bibliography.html">Bibliography</a></li>
+</ul>
+
+</div>
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="example__MNS2002_estimates.html"
+                        title="previous chapter">Example: residual-based a posteriori error estimates</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="bibliography.html"
+                        title="next chapter">Bibliography</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>You are using <code>localtoc.html</code> in <code>html_sidebars</code>. This
+configuration does not work with Furo, which is why you're seeing this message.
+Please see <a href="https://pradyunsg.me/furo/customisation/sidebar/">
+documentation on sidebar customisation in Furo</a> for more details.
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
           
-
-          <div class="body" role="main">
-            
-  
 <div class="admonition">
 <p class="admonition-title">Run this tutorial</p>
-    <a href="https://mybinder.org/v2/gh/dune-community/dune-gdt-tutorials-pages/add-gdt-tutorials-and-examples?filepath=example__ipdg_heat_equation.ipynb">Click here</a> to run this tutorial on mybinder.org: <a href="https://mybinder.org/v2/gh/dune-community/dune-gdt-tutorials-pages/add-gdt-tutorials-and-examples?filepath=example__ipdg_heat_equation.ipynb">
-        <img src="https://mybinder.org/badge_logo.svg" alt="try on mybinder.org">
-    </a><br/>
-    <emph>Please note that starting the notebook server may take a couple of minutes.</emph>
+<a href="https://mybinder.org/v2/gh/dune-community/dune-gdt-tutorials-pages/add-gdt-tutorials-and-examples?filepath=example__ipdg_heat_equation.ipynb">Click here</a> to run this tutorial on mybinder.org: <a href="https://mybinder.org/v2/gh/dune-community/dune-gdt-tutorials-pages/add-gdt-tutorials-and-examples?filepath=example__ipdg_heat_equation.ipynb">
+<img alt="try on mybinder.org" src="https://mybinder.org/badge_logo.svg"/>
+</a><br/>
+<emph>Please note that starting the notebook server may take a couple of minutes.</emph>
 </div>
-    <section class="tex2jax_ignore mathjax_ignore" id="example-sipdg-for-the-instationary-heat-equation">
-<h1>Example: SIPDG for the instationary heat equation<a class="headerlink" href="#example-sipdg-for-the-instationary-heat-equation" title="Permalink to this headline">¶</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="example-sipdg-for-the-instationary-heat-equation">
+<h1>Example: SIPDG for the instationary heat equation<a class="headerlink" href="#example-sipdg-for-the-instationary-heat-equation" title="Permalink to this headline">#</a></h1>
 <section id="this-is-work-in-progress-wip-still-missing">
-<h2>This is work in progress (WIP), still missing:<a class="headerlink" href="#this-is-work-in-progress-wip-still-missing" title="Permalink to this headline">¶</a></h2>
+<h2>This is work in progress (WIP), still missing:<a class="headerlink" href="#this-is-work-in-progress-wip-still-missing" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>explanations</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># wurlitzer: display dune&#39;s output in the notebook</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># wurlitzer: display dune's output in the notebook</span>
 <span class="o">%</span><span class="k">load_ext</span> wurlitzer
 <span class="o">%</span><span class="k">matplotlib</span> notebook
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="n">np</span><span class="o">.</span><span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span> <span class="c1"># silence numpys warnings</span>
+<span class="n">np</span><span class="o">.</span><span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">'ignore'</span><span class="p">)</span> <span class="c1"># silence numpys warnings</span>
 </pre></div>
 </div>
 </div>
@@ -76,14 +245,14 @@
 <span class="n">grid</span> <span class="o">=</span> <span class="n">make_cube_grid</span><span class="p">(</span><span class="n">Dim</span><span class="p">(</span><span class="n">d</span><span class="p">),</span> <span class="n">Simplex</span><span class="p">(),</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
 <span class="n">grid</span><span class="o">.</span><span class="n">global_refine</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># we need to refine once to obtain a symmetric grid</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;grid has </span><span class="si">{</span><span class="n">grid</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="si">}</span><span class="s1"> elements, </span><span class="si">{</span><span class="n">grid</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">d</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="s1"> edges and </span><span class="si">{</span><span class="n">grid</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">d</span><span class="p">)</span><span class="si">}</span><span class="s1"> vertices&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'grid has </span><span class="si">{</span><span class="n">grid</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="si">}</span><span class="s1"> elements, </span><span class="si">{</span><span class="n">grid</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">d</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="s1"> edges and </span><span class="si">{</span><span class="n">grid</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">d</span><span class="p">)</span><span class="si">}</span><span class="s1"> vertices'</span><span class="p">)</span>
 
 <span class="n">boundary_info</span> <span class="o">=</span> <span class="n">AllDirichletBoundaryInfo</span><span class="p">(</span><span class="n">grid</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GridParameterBlock: Parameter &#39;refinementedge&#39; not specified, defaulting to &#39;ARBITRARY&#39;.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GridParameterBlock: Parameter 'refinementedge' not specified, defaulting to 'ARBITRARY'.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>grid has 16 elements, 28 edges and 13 vertices
@@ -93,14 +262,14 @@
 </div>
 </section>
 <section id="stationary-data-functions">
-<h2>stationary data functions<a class="headerlink" href="#stationary-data-functions" title="Permalink to this headline">¶</a></h2>
+<h2>stationary data functions<a class="headerlink" href="#stationary-data-functions" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dune.xt.functions</span> <span class="kn">import</span> <span class="n">GridFunction</span> <span class="k">as</span> <span class="n">GF</span>
 
-<span class="n">diffusion</span> <span class="o">=</span> <span class="n">GF</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="n">dim_range</span><span class="o">=</span><span class="p">(</span><span class="n">Dim</span><span class="p">(</span><span class="n">d</span><span class="p">),</span> <span class="n">Dim</span><span class="p">(</span><span class="n">d</span><span class="p">)),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;diffusion&#39;</span><span class="p">)</span>
-<span class="n">source</span> <span class="o">=</span> <span class="n">GF</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;source&#39;</span><span class="p">)</span>
-<span class="n">u_0</span> <span class="o">=</span> <span class="n">GF</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;u_0&#39;</span><span class="p">)</span>
+<span class="n">diffusion</span> <span class="o">=</span> <span class="n">GF</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="n">dim_range</span><span class="o">=</span><span class="p">(</span><span class="n">Dim</span><span class="p">(</span><span class="n">d</span><span class="p">),</span> <span class="n">Dim</span><span class="p">(</span><span class="n">d</span><span class="p">)),</span> <span class="n">name</span><span class="o">=</span><span class="s1">'diffusion'</span><span class="p">)</span>
+<span class="n">source</span> <span class="o">=</span> <span class="n">GF</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">'source'</span><span class="p">)</span>
+<span class="n">u_0</span> <span class="o">=</span> <span class="n">GF</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">'u_0'</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -141,7 +310,7 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">weight</span> <span class="o">=</span> <span class="n">GF</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="n">dim_range</span><span class="o">=</span><span class="p">(</span><span class="n">Dim</span><span class="p">(</span><span class="n">d</span><span class="p">),</span> <span class="n">Dim</span><span class="p">(</span><span class="n">d</span><span class="p">)),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;weight&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">weight</span> <span class="o">=</span> <span class="n">GF</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="n">dim_range</span><span class="o">=</span><span class="p">(</span><span class="n">Dim</span><span class="p">(</span><span class="n">d</span><span class="p">),</span> <span class="n">Dim</span><span class="p">(</span><span class="n">d</span><span class="p">)),</span> <span class="n">name</span><span class="o">=</span><span class="s1">'weight'</span><span class="p">)</span>
 <span class="n">penalty_parameter</span> <span class="o">=</span> <span class="mi">16</span>
 <span class="n">symmetry_factor</span> <span class="o">=</span> <span class="mi">1</span>
 
@@ -172,13 +341,13 @@
 </div>
 </div>
 </div>
-<div class="math notranslate nohighlight">
+<div class="math-wrapper"><div class="math notranslate nohighlight">
 \[\begin{split}\begin{align}
 \Delta t m_h(u^{n + 1} - u^n, v) + a_h(u^{n + 1}, v) &amp;= l_h(v)\\
 m_h(u^{n + 1} - u^n, v) + \Delta t \cdot a_h(u^{n + 1}, v) &amp;= \Delta t \cdot l_h(v)\\
 m_h(u^{n + 1},v) - m_h(u^n, v) + \Delta t \cdot a_h(u^{n + 1}, v) &amp;= \Delta t \cdot l_h(v)\\
 m_h(u^{n + 1},v) + \Delta t \cdot a_h(u^{n + 1}, v) &amp;= m_h(u^n, v) + \Delta t \cdot l_h(v)
-\end{align}\end{split}\]</div>
+\end{align}\end{split}\]</div></div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dune.gdt</span> <span class="kn">import</span> <span class="n">default_interpolation</span>
@@ -201,7 +370,7 @@ m_h(u^{n + 1},v) + \Delta t \cdot a_h(u^{n + 1}, v) &amp;= m_h(u^n, v) + \Delta 
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">ii</span><span class="p">,</span> <span class="n">vec</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">u_h</span><span class="p">):</span>
-    <span class="n">DiscreteFunction</span><span class="p">(</span><span class="n">V_h</span><span class="p">,</span> <span class="n">vec</span><span class="p">,</span> <span class="s1">&#39;solution&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">visualize</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;solution_</span><span class="si">{</span><span class="n">ii</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">DiscreteFunction</span><span class="p">(</span><span class="n">V_h</span><span class="p">,</span> <span class="n">vec</span><span class="p">,</span> <span class="s1">'solution'</span><span class="p">)</span><span class="o">.</span><span class="n">visualize</span><span class="p">(</span><span class="sa">f</span><span class="s1">'solution_</span><span class="si">{</span><span class="n">ii</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -209,21 +378,21 @@ m_h(u^{n + 1},v) + \Delta t \cdot a_h(u^{n + 1}, v) &amp;= m_h(u^n, v) + \Delta 
 <p>Start <code class="docutils literal notranslate"><span class="pre">paraview</span></code> in a terminal to visualize the time series.</p>
 </section>
 <section id="timedependent-right-hand-side">
-<h2>timedependent right hand side<a class="headerlink" href="#timedependent-right-hand-side" title="Permalink to this headline">¶</a></h2>
+<h2>timedependent right hand side<a class="headerlink" href="#timedependent-right-hand-side" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dune.xt.functions</span> <span class="kn">import</span> <span class="n">ExpressionFunction</span><span class="p">,</span> <span class="n">ParametricExpressionFunction</span>
 
-<span class="n">u_str</span> <span class="o">=</span> <span class="s1">&#39;0.1*sin(20*pi*_t)*exp(-10*(x[0]*x[0]+x[1]*x[1]))&#39;</span>
+<span class="n">u_str</span> <span class="o">=</span> <span class="s1">'0.1*sin(20*pi*_t)*exp(-10*(x[0]*x[0]+x[1]*x[1]))'</span>
 <span class="n">u_0</span> <span class="o">=</span> <span class="n">GF</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span>
-         <span class="n">ExpressionFunction</span><span class="p">(</span><span class="n">dim_domain</span><span class="o">=</span><span class="n">Dim</span><span class="p">(</span><span class="n">d</span><span class="p">),</span> <span class="n">variable</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">expression</span><span class="o">=</span><span class="n">u_str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;_t&#39;</span><span class="p">,</span> <span class="s1">&#39;0&#39;</span><span class="p">),</span>
-                            <span class="n">order</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;u_0&#39;</span><span class="p">))</span>
+         <span class="n">ExpressionFunction</span><span class="p">(</span><span class="n">dim_domain</span><span class="o">=</span><span class="n">Dim</span><span class="p">(</span><span class="n">d</span><span class="p">),</span> <span class="n">variable</span><span class="o">=</span><span class="s1">'x'</span><span class="p">,</span> <span class="n">expression</span><span class="o">=</span><span class="n">u_str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">'_t'</span><span class="p">,</span> <span class="s1">'0'</span><span class="p">),</span>
+                            <span class="n">order</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">'u_0'</span><span class="p">))</span>
 
-<span class="n">diffusion</span> <span class="o">=</span> <span class="n">GF</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="n">dim_range</span><span class="o">=</span><span class="p">(</span><span class="n">Dim</span><span class="p">(</span><span class="n">d</span><span class="p">),</span> <span class="n">Dim</span><span class="p">(</span><span class="n">d</span><span class="p">)),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;diffusion&#39;</span><span class="p">)</span>
+<span class="n">diffusion</span> <span class="o">=</span> <span class="n">GF</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="n">dim_range</span><span class="o">=</span><span class="p">(</span><span class="n">Dim</span><span class="p">(</span><span class="n">d</span><span class="p">),</span> <span class="n">Dim</span><span class="p">(</span><span class="n">d</span><span class="p">)),</span> <span class="n">name</span><span class="o">=</span><span class="s1">'diffusion'</span><span class="p">)</span>
 <span class="n">source</span> <span class="o">=</span> <span class="n">GF</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">ParametricExpressionFunction</span><span class="p">(</span>
-    <span class="n">dim_domain</span><span class="o">=</span><span class="n">Dim</span><span class="p">(</span><span class="n">d</span><span class="p">),</span> <span class="n">variable</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">param_type</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;_t&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span>
-    <span class="n">expressions</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;exp(-0.1*(x[0]*x[0]+x[1]*x[1]))*(2*pi*cos(20*pi*_t)+4*sin(20*pi*_t)-40*sin(20*pi*_t)(x[0]*x[0]+x[1]*x[1]))&#39;</span><span class="p">],</span>
-    <span class="n">order</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;source&#39;</span><span class="p">))</span>
+    <span class="n">dim_domain</span><span class="o">=</span><span class="n">Dim</span><span class="p">(</span><span class="n">d</span><span class="p">),</span> <span class="n">variable</span><span class="o">=</span><span class="s1">'x'</span><span class="p">,</span> <span class="n">param_type</span><span class="o">=</span><span class="p">{</span><span class="s1">'_t'</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span>
+    <span class="n">expressions</span><span class="o">=</span><span class="p">[</span><span class="s1">'exp(-0.1*(x[0]*x[0]+x[1]*x[1]))*(2*pi*cos(20*pi*_t)+4*sin(20*pi*_t)-40*sin(20*pi*_t)(x[0]*x[0]+x[1]*x[1]))'</span><span class="p">],</span>
+    <span class="n">order</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">'source'</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -249,7 +418,7 @@ m_h(u^{n + 1},v) + \Delta t \cdot a_h(u^{n + 1}, v) &amp;= m_h(u^n, v) + \Delta 
     <span class="n">time</span> <span class="o">+=</span> <span class="n">dt</span>
     <span class="n">l_h</span><span class="o">.</span><span class="n">vector</span><span class="o">.</span><span class="n">set_all</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
     <span class="n">l_h</span> <span class="o">+=</span> <span class="p">(</span><span class="n">LocalElementIntegralFunctional</span><span class="p">(</span><span class="n">LocalElementProductIntegrand</span><span class="p">(</span><span class="n">GF</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">with_ansatz</span><span class="p">(</span><span class="n">source</span><span class="p">)),</span>
-            <span class="p">{</span><span class="s1">&#39;_t&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">time</span><span class="p">]},</span>
+            <span class="p">{</span><span class="s1">'_t'</span><span class="p">:</span> <span class="p">[</span><span class="n">time</span><span class="p">]},</span>
             <span class="n">ApplyOnAllElements</span><span class="p">(</span><span class="n">grid</span><span class="p">))</span>
     <span class="n">l_h</span><span class="o">.</span><span class="n">assemble</span><span class="p">()</span>
     <span class="n">u_n</span> <span class="o">=</span> <span class="n">u_h</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
@@ -262,7 +431,7 @@ m_h(u^{n + 1},v) + \Delta t \cdot a_h(u^{n + 1}, v) &amp;= m_h(u^n, v) + \Delta 
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">ii</span><span class="p">,</span> <span class="n">vec</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">u_h</span><span class="p">):</span>
-    <span class="n">DiscreteFunction</span><span class="p">(</span><span class="n">V_h</span><span class="p">,</span> <span class="n">vec</span><span class="p">,</span> <span class="s1">&#39;solution&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">visualize</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;solution_timedep_data_</span><span class="si">{</span><span class="n">ii</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">DiscreteFunction</span><span class="p">(</span><span class="n">V_h</span><span class="p">,</span> <span class="n">vec</span><span class="p">,</span> <span class="s1">'solution'</span><span class="p">)</span><span class="o">.</span><span class="n">visualize</span><span class="p">(</span><span class="sa">f</span><span class="s1">'solution_timedep_data_</span><span class="si">{</span><span class="n">ii</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -272,105 +441,93 @@ m_h(u^{n + 1},v) + \Delta t \cdot a_h(u^{n + 1}, v) &amp;= m_h(u^n, v) + \Delta 
 <a class="reference download internal" download="" href="_downloads/d70ea98346caedf29859de4c9eccb274/example__ipdg_heat_equation.ipynb"><code class="xref download myst-nb docutils literal notranslate"><span class="pre">example__ipdg_heat_equation.ipynb</span></code></a></p>
 </section>
 </section>
-
-
 <script type="application/vnd.jupyter.widget-state+json">
 {"state": {"019c5dab98dc456199c27da2c8196f15": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "01c93b374518420ba1074d1653961ab3": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "02ebfb2adb944cb4a92cc3f192441854": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HTMLModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_9438f31cea494fd49928ba0a22b92b8d", "placeholder": "\u200b", "style": "IPY_MODEL_e82336cee666443e842234c33cfd15a5", "value": ""}}, "0488529fb61e4467942c9ac41ed03b46": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HTMLModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_c47ab227d8494652b4bff902464f382a", "placeholder": "\u200b", "style": "IPY_MODEL_39dcefeb90254a19ad487c1af7ff55b5", "value": ""}}, "05ccc1e404df4c7ab7003bf80e72d0d6": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "07aa15e8aa67411894f235d51b5bf667": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "DescriptionStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "1468113befc94538bb70d4b978f3caa9": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "16em", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "auto", "padding": null, "right": null, "top": null, "visibility": null, "width": "100%"}}, "163eaf062ba64a41b67b1fe1efb237f6": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "16em", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "auto", "padding": null, "right": null, "top": null, "visibility": null, "width": "100%"}}, "165c496b8e8f49b3a5d9444d7bdc8418": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "1e14b1b60ca3418eb289239f09ce7a28": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HTMLModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_dd74702909f04d268d726a1fde45c346", "placeholder": "\u200b", "style": "IPY_MODEL_40824339903040c0a01e2496a5d0b842", "value": ""}}, "1e20537629a242f3b5aa58cc7f0c859e": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HTMLModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_a32bcadfedea49d69497f8f5fb2a570f", "placeholder": "\u200b", "style": "IPY_MODEL_4ae386760d594ca8a2a88eb49845638f", "value": ""}}, "25f1eed6b1514cc6b22b7c8823c3663e": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HTMLModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_1468113befc94538bb70d4b978f3caa9", "placeholder": "\u200b", "style": "IPY_MODEL_07aa15e8aa67411894f235d51b5bf667", "value": ""}}, "33710f7323304cfbaf116575eb4eb9ec": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "AccordionModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "AccordionModel", "_titles": {"0": "Log Output"}, "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "AccordionView", "box_style": "", "children": ["IPY_MODEL_25f1eed6b1514cc6b22b7c8823c3663e"], "layout": "IPY_MODEL_8391766ee2d84c26b0260a530acbd58d", "selected_index": null}}, "39dcefeb90254a19ad487c1af7ff55b5": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "DescriptionStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "3d1e092a86f841259552c7a0aa4dc72b": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "DescriptionStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "40824339903040c0a01e2496a5d0b842": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "DescriptionStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "420837f34b494f278f57bf7a5e1d90db": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "16em", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "auto", "padding": null, "right": null, "top": null, "visibility": null, "width": "100%"}}, "427b566b61da44e1b9dc44864ec77aec": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "DescriptionStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "43d1a209cf614558ad158da6db89c7b5": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "AccordionModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "AccordionModel", "_titles": {"0": "Log Output"}, "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "AccordionView", "box_style": "", "children": ["IPY_MODEL_1e14b1b60ca3418eb289239f09ce7a28"], "layout": "IPY_MODEL_165c496b8e8f49b3a5d9444d7bdc8418", "selected_index": null}}, "45b1dd6ca4314320ba8fb5a44210fa6f": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "AccordionModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "AccordionModel", "_titles": {"0": "Log Output"}, "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "AccordionView", "box_style": "", "children": ["IPY_MODEL_4e78db4aa239435885218e5a63f0ee5e"], "layout": "IPY_MODEL_b85e9c9849244a50b27d6860812a0ae5", "selected_index": null}}, "48bff59b541d4559a5c70614ba928c92": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "DescriptionStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "4ae386760d594ca8a2a88eb49845638f": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "DescriptionStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "4e78db4aa239435885218e5a63f0ee5e": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HTMLModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_163eaf062ba64a41b67b1fe1efb237f6", "placeholder": "\u200b", "style": "IPY_MODEL_3d1e092a86f841259552c7a0aa4dc72b", "value": ""}}, "529193e33036476591d104bd071adbe3": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HTMLModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_cfc3c9f08f7e42feab561d8cd135a887", "placeholder": "\u200b", "style": "IPY_MODEL_427b566b61da44e1b9dc44864ec77aec", "value": ""}}, "560bcc5dd80a49c1b5033662a07b0530": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "AccordionModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "AccordionModel", "_titles": {"0": "Log Output"}, "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "AccordionView", "box_style": "", "children": ["IPY_MODEL_ad8eed9fe934423daabe2f619f2a885a"], "layout": "IPY_MODEL_05ccc1e404df4c7ab7003bf80e72d0d6", "selected_index": null}}, "57ea80e613ab48448add2f0742ffda90": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "5bac82c5d6364a2b99b584a544bacb9b": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "5db24239e482442bb1049598459c71c6": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HTMLModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_6c852b1837aa45aba968d5034905defa", "placeholder": "\u200b", "style": "IPY_MODEL_94fdd794958f4bddb3b3a1cd39194bff", "value": ""}}, "6b43c60aa7b94e60ae4966de7707fa6a": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HTMLModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_420837f34b494f278f57bf7a5e1d90db", "placeholder": "\u200b", "style": "IPY_MODEL_969d162f2409450da41f8de5a35c88ee", "value": ""}}, "6c852b1837aa45aba968d5034905defa": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "16em", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "auto", "padding": null, "right": null, "top": null, "visibility": null, "width": "100%"}}, "72eab299f3ce411eace1d08dbe9a51d7": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "AccordionModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "AccordionModel", "_titles": {"0": "Log Output"}, "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "AccordionView", "box_style": "", "children": ["IPY_MODEL_f170c97b43854983b48f0c13dec46abd"], "layout": "IPY_MODEL_a5f9a131479d4d4e9b23b2c815faa9ef", "selected_index": null}}, "7af90f5fe1bc4ac0b52535dd9e91a8d2": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "DescriptionStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "7c9440913e0a460faf0da7d3d2a6c10c": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "AccordionModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "AccordionModel", "_titles": {"0": "Log Output"}, "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "AccordionView", "box_style": "", "children": ["IPY_MODEL_96a0457e17ee4a358598f24e173624fb"], "layout": "IPY_MODEL_89e2130cf2c44a0baa2205b21eed204c", "selected_index": null}}, "8391766ee2d84c26b0260a530acbd58d": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "89592ec0d1ec412db5228f272ba9f00a": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "AccordionModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "AccordionModel", "_titles": {"0": "Log Output"}, "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "AccordionView", "box_style": "", "children": ["IPY_MODEL_02ebfb2adb944cb4a92cc3f192441854"], "layout": "IPY_MODEL_ad4dbf4519d946a88c0d816c8a251db0", "selected_index": null}}, "89e2130cf2c44a0baa2205b21eed204c": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "8b4423ad22b0415db2373b2781207e31": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "AccordionModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "AccordionModel", "_titles": {"0": "Log Output"}, "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "AccordionView", "box_style": "", "children": ["IPY_MODEL_5db24239e482442bb1049598459c71c6"], "layout": "IPY_MODEL_57ea80e613ab48448add2f0742ffda90", "selected_index": null}}, "9438f31cea494fd49928ba0a22b92b8d": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "16em", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "auto", "padding": null, "right": null, "top": null, "visibility": null, "width": "100%"}}, "94fdd794958f4bddb3b3a1cd39194bff": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "DescriptionStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "954c7ac3f4a14d45bb84986213044961": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "AccordionModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "AccordionModel", "_titles": {"0": "Log Output"}, "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "AccordionView", "box_style": "", "children": ["IPY_MODEL_1e20537629a242f3b5aa58cc7f0c859e"], "layout": "IPY_MODEL_5bac82c5d6364a2b99b584a544bacb9b", "selected_index": null}}, "969d162f2409450da41f8de5a35c88ee": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "DescriptionStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "96a0457e17ee4a358598f24e173624fb": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HTMLModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_e31b3bdf4bd444cd9820f095bf7d24bd", "placeholder": "\u200b", "style": "IPY_MODEL_48bff59b541d4559a5c70614ba928c92", "value": ""}}, "9d2611da770a4269a7177b158e41c4de": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "AccordionModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "AccordionModel", "_titles": {"0": "Log Output"}, "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "AccordionView", "box_style": "", "children": ["IPY_MODEL_529193e33036476591d104bd071adbe3"], "layout": "IPY_MODEL_019c5dab98dc456199c27da2c8196f15", "selected_index": null}}, "9de38abf3992494295228312093889b9": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "16em", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "auto", "padding": null, "right": null, "top": null, "visibility": null, "width": "100%"}}, "a32bcadfedea49d69497f8f5fb2a570f": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "16em", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "auto", "padding": null, "right": null, "top": null, "visibility": null, "width": "100%"}}, "a5f9a131479d4d4e9b23b2c815faa9ef": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "a87de8227abe4884b8687096804fb2a9": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "AccordionModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "AccordionModel", "_titles": {"0": "Log Output"}, "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "AccordionView", "box_style": "", "children": ["IPY_MODEL_0488529fb61e4467942c9ac41ed03b46"], "layout": "IPY_MODEL_01c93b374518420ba1074d1653961ab3", "selected_index": null}}, "ad4dbf4519d946a88c0d816c8a251db0": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "ad8eed9fe934423daabe2f619f2a885a": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HTMLModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_9de38abf3992494295228312093889b9", "placeholder": "\u200b", "style": "IPY_MODEL_7af90f5fe1bc4ac0b52535dd9e91a8d2", "value": ""}}, "aef4de6cf33b4d72a25edfe4ae6e315a": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "DescriptionStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "b67af390bd1f45368444f23715c52064": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "AccordionModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "AccordionModel", "_titles": {"0": "Log Output"}, "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "AccordionView", "box_style": "", "children": ["IPY_MODEL_6b43c60aa7b94e60ae4966de7707fa6a"], "layout": "IPY_MODEL_f5be7f7dbdc94d40a2ebe620a94079f5", "selected_index": null}}, "b85e9c9849244a50b27d6860812a0ae5": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "c47ab227d8494652b4bff902464f382a": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "16em", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "auto", "padding": null, "right": null, "top": null, "visibility": null, "width": "100%"}}, "cfc3c9f08f7e42feab561d8cd135a887": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "16em", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "auto", "padding": null, "right": null, "top": null, "visibility": null, "width": "100%"}}, "dd74702909f04d268d726a1fde45c346": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "16em", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "auto", "padding": null, "right": null, "top": null, "visibility": null, "width": "100%"}}, "e31b3bdf4bd444cd9820f095bf7d24bd": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "16em", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "auto", "padding": null, "right": null, "top": null, "visibility": null, "width": "100%"}}, "e82336cee666443e842234c33cfd15a5": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "DescriptionStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "eaa4ebb4a2c94c208719da160b1a8a1b": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "16em", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "auto", "padding": null, "right": null, "top": null, "visibility": null, "width": "100%"}}, "f170c97b43854983b48f0c13dec46abd": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HTMLModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_eaa4ebb4a2c94c208719da160b1a8a1b", "placeholder": "\u200b", "style": "IPY_MODEL_aef4de6cf33b4d72a25edfe4ae6e315a", "value": ""}}, "f5be7f7dbdc94d40a2ebe620a94079f5": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}}, "version_major": 2, "version_minor": 0}
 </script>
 
-
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="bibliography.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Bibliography</div>
+              </div>
+              <svg><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="example__MNS2002_estimates.html">
+              <svg><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Example: residual-based a posteriori error estimates</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2013-2021 dune-gdt developers and contributors
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            <div class="last-updated">
+              Last updated on Feb 15, 2022</div>
+          </div>
+          <div class="right-details">
+            <div class="icons">
+              
+            </div>
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            Contents
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Example: SIPDG for the instationary heat equation</a><ul>
+<li><a class="reference internal" href="#this-is-work-in-progress-wip-still-missing">This is work in progress (WIP), still missing:</a></li>
+<li><a class="reference internal" href="#stationary-data-functions">stationary data functions</a></li>
+<li><a class="reference internal" href="#timedependent-right-hand-side">timedependent right hand side</a></li>
+</ul>
+</li>
+</ul>
 
           </div>
-          
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-<h1 class="logo"><a href="index.html">dune-gdt</a></h1>
-
-
-
-
-
-
-
-
-<h3>Navigation</h3>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="examples.html">Examples</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="example__prolongations_products_and_norms.html">Example: prolongations and computing products and norms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="example__simple_grid_adaptation.html">Example: Grid adaptation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="example__ESV2007_estimates.html">Example: a posteriori error estimates based on flux reconstruction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="example__gmsh_grid.html">Example: working with gmsh grids</a></li>
-<li class="toctree-l2"><a class="reference internal" href="example__MNS2002_estimates.html">Example: residual-based a posteriori error estimates</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Example: SIPDG for the instationary heat equation</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#this-is-work-in-progress-wip-still-missing">This is work in progress (WIP), still missing:</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#stationary-data-functions">stationary data functions</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#timedependent-right-hand-side">timedependent right hand side</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="bibliography.html">Bibliography</a></li>
-</ul>
-
-<div class="relations">
-<h3>Related Topics</h3>
-<ul>
-  <li><a href="index.html">Documentation overview</a><ul>
-  <li><a href="examples.html">Examples</a><ul>
-      <li>Previous: <a href="example__MNS2002_estimates.html" title="previous chapter">Example: residual-based a posteriori error estimates</a></li>
-      <li>Next: <a href="bibliography.html" title="next chapter">Bibliography</a></li>
-  </ul></li>
-  </ul></li>
-</ul>
-</div>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
-      <input type="submit" value="Go" />
-    </form>
-    </div>
-</div>
-<script>$('#searchbox').show(0);</script>
-<h3><a href="index.html">Table of Contents</a></h3>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="examples.html">Examples</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="example__prolongations_products_and_norms.html">Example: prolongations and computing products and norms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="example__simple_grid_adaptation.html">Example: Grid adaptation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="example__ESV2007_estimates.html">Example: a posteriori error estimates based on flux reconstruction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="example__gmsh_grid.html">Example: working with gmsh grids</a></li>
-<li class="toctree-l2"><a class="reference internal" href="example__MNS2002_estimates.html">Example: residual-based a posteriori error estimates</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Example: SIPDG for the instationary heat equation</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#this-is-work-in-progress-wip-still-missing">This is work in progress (WIP), still missing:</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#stationary-data-functions">stationary data functions</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#timedependent-right-hand-side">timedependent right hand side</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="bibliography.html">Bibliography</a></li>
-</ul>
-
-        </div>
-      </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="footer">
-      &copy;2013-2021 dune-gdt developers and contributors.
       
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.3.1</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
-    </div>
-
-    
-
-    
-  </body>
+    </aside>
+  </div>
+</div><script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/scripts/furo.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    </body>
 </html>
