@@ -1,4 +1,4 @@
-FROM zivgitlab.wwu.io/ag-ohlberger/dune-community/dune-gdt-tutorials/binder:main
+FROM zivgitlab.wwu.io/ag-ohlberger/dune-community/dune-gdt-tutorials/binder:add-gdt-tutorials-and-examples
 
 # binder wants to set the NB_ vars anyways, so we use it to service both setups
 ARG NB_USER
@@ -10,7 +10,7 @@ RUN rm -rf /tutorials && useradd -d /tutorials --shell /bin/bash -u ${NB_UID} -o
 ENV USER=${NB_USER} \
     HOME=/tutorials
 
-COPY main/* /tutorials/
+COPY add-gdt-tutorials-and-examples/* /tutorials/
 RUN chown -R ${NB_USER} /tutorials
 USER ${NB_USER}
 
