@@ -24,11 +24,11 @@ kernelspec:
 :tags: [remove-cell]
 :load: myst_code_init.py
 ```
-# Tutorial 20 [WIP]: discontinuous IPDG for the stationary heat equation
+# Tutorial: discontinuous IPDG for the stationary heat equation
 
-This tutorial shows how to solve the stationary heat equation with homogeneous Dirichlet boundary conditions using interior penalty (IP) discontinuous Galerkin (DG) Finite Elmenets with `dune-gdt`.
+This tutorial shows how to solve the stationary heat equation with homogeneous Dirichlet boundary conditions using interior penalty (IP) discontinuous Galerkin (DG) Finite Elements with `dune-gdt`.
 
-## This is work in progress (WIP), still missing:
+This is work in progress [WIP], still missing:
 
 * mathematical theory on IPDG methods
 * explanation of the IPDG implementation
@@ -68,7 +68,7 @@ print(f'grid has {grid.size(0)} elements, {grid.size(d - 1)} edges and {grid.siz
 _ = visualize_grid(grid)
 ```
 
-# 1.9: everything in a single function
+## 1.9: everything in a single function
 
 For a better overview, the above discretization code is also available in a single function in the file `discretize_elliptic_ipdg.py`.
 

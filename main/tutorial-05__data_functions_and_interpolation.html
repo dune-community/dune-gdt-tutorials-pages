@@ -3,12 +3,12 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Tutorial 10 [WIP]: continuous FEM for the stationary heat equation" href="tutorial-10__cg_stationary_heat_equation_dirichlet.html" /><link rel="prev" title="Tutorials" href="tutorials.html" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Tutorial: continuous FEM for the stationary heat equation" href="tutorial-10__cg_stationary_heat_equation_dirichlet.html" /><link rel="prev" title="Tutorials" href="tutorials.html" />
 
-    <meta name="generator" content="sphinx-4.3.1, furo 2022.02.14.1"/>
-        <title>Tutorial 05 [WIP]: data functions and interpolation - dune-gdt v2021.1.8 Manual</title>
+    <meta name="generator" content="sphinx-4.3.1, furo 2022.03.04"/>
+        <title>Tutorial: data functions and interpolation - dune-gdt v2021.1.8 Manual</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=a8f031f701c6af50c9919b48f173a5785af06fac" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=935aa2abcc5c1da4283d1dc201fb1f0add16d23a" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=25ceb02ed1c46dc30f2321ff83e92799f69dfdb9" />
@@ -22,16 +22,18 @@
   --color-code-foreground: black;
   
   }
-  body[data-theme="dark"] {
-    --color-code-background: #202020;
-  --color-code-foreground: #d0d0d0;
-  
-  }
-  @media (prefers-color-scheme: dark) {
-    body:not([data-theme="light"]) {
+  @media not print {
+    body[data-theme="dark"] {
       --color-code-background: #202020;
   --color-code-foreground: #d0d0d0;
   
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
     }
   }
 </style></head>
@@ -141,20 +143,17 @@
   <aside class="sidebar-drawer">
     <div class="sidebar-container">
       
-      <div class="sidebar-sticky"><div class="sidebar-tree">
+      <div class="sidebar-sticky"><form class="sidebar-search-container" method="get" action="search.html" role="search">
+  <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <ul class="current">
 <li class="toctree-l1 current has-children"><a class="reference internal" href="tutorials.html">Tutorials</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
-<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Tutorial 05 [WIP]: data functions and interpolation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#visualizing-functions">2: visualizing functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#the-gridfunction">3: The <code class="docutils literal notranslate"><span class="pre">GridFunction</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#interpolation">4: interpolation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#performance-considerations">5: performance considerations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial-10__cg_stationary_heat_equation_dirichlet.html">Tutorial 10 [WIP]: continuous FEM for the stationary heat equation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial-10__cg_stationary_heat_equation_dirichlet.html#diffusion-with-homogeneous-dirichlet-boundary-condition">1: diffusion with homogeneous Dirichlet boundary condition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial-10__cg_stationary_heat_equation_dirichlet.html#everything-in-a-single-function">1.9: everything in a single function</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial-10__cg_stationary_heat_equation_dirichlet.html#diffusion-with-non-homogeneous-dirichlet-boundary-condition">2: diffusion with non-homogeneous Dirichlet boundary condition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial-20__ipdg_stationary_heat_equation_dirichlet.html">Tutorial 20 [WIP]: discontinuous IPDG for the stationary heat equation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial-20__ipdg_stationary_heat_equation_dirichlet.html#everything-in-a-single-function">1.9: everything in a single function</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Tutorial: data functions and interpolation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial-10__cg_stationary_heat_equation_dirichlet.html">Tutorial: continuous FEM for the stationary heat equation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial-20__ipdg_stationary_heat_equation_dirichlet.html">Tutorial: discontinuous IPDG for the stationary heat equation</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="examples.html">Examples</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -169,26 +168,8 @@
 <li class="toctree-l1"><a class="reference internal" href="bibliography.html">Bibliography</a></li>
 </ul>
 
-</div>
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="tutorials.html"
-                        title="previous chapter">Tutorials</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="tutorial-10__cg_stationary_heat_equation_dirichlet.html"
-                        title="next chapter">Tutorial 10 [WIP]: continuous FEM for the stationary heat equation</a></p>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
-      <input type="submit" value="Go" />
-    </form>
-    </div>
-</div>
-<script>$('#searchbox').show(0);</script>You are using <code>localtoc.html</code> in <code>html_sidebars</code>. This
-configuration does not work with Furo, which is why you're seeing this message.
-Please see <a href="https://pradyunsg.me/furo/customisation/sidebar/">
-documentation on sidebar customisation in Furo</a> for more details.
+</div></div>
+
       </div>
       
     </div>
@@ -196,6 +177,12 @@ documentation on sidebar customisation in Furo</a> for more details.
   <div class="main">
     <div class="content">
       <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
         <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
@@ -213,15 +200,14 @@ documentation on sidebar customisation in Furo</a> for more details.
           
 <div class="admonition">
 <p class="admonition-title">Run this tutorial</p>
-<a href="https://mybinder.org/v2/gh/dune-community/dune-gdt-tutorials-pages/main?filepath=tutorial-05__data_functions_and_interpolation.ipynb">Click here</a> to run this tutorial on mybinder.org: <a href="https://mybinder.org/v2/gh/dune-community/dune-gdt-tutorials-pages/main?filepath=tutorial-05__data_functions_and_interpolation.ipynb">
+<a href="https://mybinder.org/v2/gh/dune-community/dune-gdt-tutorials-pages/try-to-fix-structure?filepath=tutorial-05__data_functions_and_interpolation.ipynb">Click here</a> to run this tutorial on mybinder.org: <a href="https://mybinder.org/v2/gh/dune-community/dune-gdt-tutorials-pages/try-to-fix-structure?filepath=tutorial-05__data_functions_and_interpolation.ipynb">
 <img alt="try on mybinder.org" src="https://mybinder.org/badge_logo.svg"/>
 </a><br/>
 <emph>Please note that starting the notebook server may take a couple of minutes.</emph>
 </div>
-<section class="tex2jax_ignore mathjax_ignore" id="tutorial-05-wip-data-functions-and-interpolation">
-<h1>Tutorial 05 [WIP]: data functions and interpolation<a class="headerlink" href="#tutorial-05-wip-data-functions-and-interpolation" title="Permalink to this headline">#</a></h1>
-<section id="this-is-work-in-progress-wip-still-missing">
-<h2>This is work in progress (WIP), still missing:<a class="headerlink" href="#this-is-work-in-progress-wip-still-missing" title="Permalink to this headline">#</a></h2>
+<section class="tex2jax_ignore mathjax_ignore" id="tutorial-data-functions-and-interpolation">
+<h1>Tutorial: data functions and interpolation<a class="headerlink" href="#tutorial-data-functions-and-interpolation" title="Permalink to this headline">#</a></h1>
+<p>This is work in progress [WIP], still missing:</p>
 <ul class="simple">
 <li><p>visualization in 1d</p></li>
 <li><p>visualization in 3d?</p></li>
@@ -238,7 +224,6 @@ documentation on sidebar customisation in Furo</a> for more details.
 </div>
 </div>
 </div>
-</section>
 <section id="creating-functions">
 <h2>1: creating functions<a class="headerlink" href="#creating-functions" title="Permalink to this headline">#</a></h2>
 <p>We’ll work in 2d in this tutorial since scalar functions in 2d can be best visualized within the notebook.
@@ -282,9 +267,8 @@ x &amp;\mapsto \text{epx}(x_0\, x_1)
 \end{align}\end{split}\]</div></div>
 <p>or discrete functions <span class="math notranslate nohighlight">\(v_h \in V_h\)</span>, where <span class="math notranslate nohighlight">\(V_h\)</span> is some finite-dimensional discrete function space associated with a grid. Other examples include functions obtained by reading values from a file.</p>
 <p>Let’s create some of these functions.</p>
-</section>
 <section id="using-the-constantfunction">
-<h2>1.1: using the <code class="docutils literal notranslate"><span class="pre">ConstantFunction</span></code><a class="headerlink" href="#using-the-constantfunction" title="Permalink to this headline">#</a></h2>
+<h3>1.1: using the <code class="docutils literal notranslate"><span class="pre">ConstantFunction</span></code><a class="headerlink" href="#using-the-constantfunction" title="Permalink to this headline">#</a></h3>
 <p>For constant functions.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -302,7 +286,7 @@ x &amp;\mapsto \text{epx}(x_0\, x_1)
 </div>
 </section>
 <section id="using-the-expressionfunction">
-<h2>1.2: using the <code class="docutils literal notranslate"><span class="pre">ExpressionFunction</span></code><a class="headerlink" href="#using-the-expressionfunction" title="Permalink to this headline">#</a></h2>
+<h3>1.2: using the <code class="docutils literal notranslate"><span class="pre">ExpressionFunction</span></code><a class="headerlink" href="#using-the-expressionfunction" title="Permalink to this headline">#</a></h3>
 <p>For functions given by an expression, where we have to specify the polynomial order of the expression (or the approximation order for non-polynomial functions).</p>
 <p>Note that if the name of the variable is <code class="docutils literal notranslate"><span class="pre">Foo</span></code>, the components <code class="docutils literal notranslate"><span class="pre">Foo[0]</span></code>, … <code class="docutils literal notranslate"><span class="pre">Foo[d</span> <span class="pre">-</span> <span class="pre">1]</span></code> are availabble to be used in the expression.</p>
 <ul class="simple">
@@ -330,7 +314,7 @@ x &amp;\mapsto \text{epx}(x_0\, x_1)
 </div>
 </section>
 <section id="discrete-functions">
-<h2>1.3: discrete functions<a class="headerlink" href="#discrete-functions" title="Permalink to this headline">#</a></h2>
+<h3>1.3: discrete functions<a class="headerlink" href="#discrete-functions" title="Permalink to this headline">#</a></h3>
 <p>Which often result from a discretization scheme, see the <a class="reference internal" href="tutorial-10__cg_stationary_heat_equation_dirichlet.html"><span class="doc std std-doc">tutorial on continuous Finite Elements for the stationary heat equation</span></a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -351,10 +335,10 @@ x &amp;\mapsto \text{epx}(x_0\, x_1)
 </div>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="visualizing-functions">
-<h1>2: visualizing functions<a class="headerlink" href="#visualizing-functions" title="Permalink to this headline">#</a></h1>
+<section id="visualizing-functions">
+<h2>2: visualizing functions<a class="headerlink" href="#visualizing-functions" title="Permalink to this headline">#</a></h2>
 <section id="visualizing-scalar-functions-in-2d">
-<h2>2.1: visualizing scalar functions in 2d<a class="headerlink" href="#visualizing-scalar-functions-in-2d" title="Permalink to this headline">#</a></h2>
+<h3>2.1: visualizing scalar functions in 2d<a class="headerlink" href="#visualizing-scalar-functions-in-2d" title="Permalink to this headline">#</a></h3>
 <p>We can easily visualize functions mapping from <span class="math notranslate nohighlight">\(\mathbb{R}^2 \to \mathbb{R}\)</span>. Internally, this is achieved by writing a vtk file to disk and displaying the file using K3D.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -399,13 +383,13 @@ By enabling subsampling, we obtain a much smoother plot, where the underlying vi
 <p>Subsampling may thus be a means to obtain pretty pictures, but it can also be misleading.</p>
 </section>
 <section id="visualizing-functions-in-other-dimensions">
-<h2>2.2: visualizing functions in other dimensions<a class="headerlink" href="#visualizing-functions-in-other-dimensions" title="Permalink to this headline">#</a></h2>
+<h3>2.2: visualizing functions in other dimensions<a class="headerlink" href="#visualizing-functions-in-other-dimensions" title="Permalink to this headline">#</a></h3>
 <p>Functions mapping from and to other dimensions can still be written to disk to be viewed with external viewers such as <code class="docutils literal notranslate"><span class="pre">paraview</span></code>.
 Therefore, they need to be wrapped as a <code class="docutils literal notranslate"><span class="pre">GridFunction</span></code>, as explained in the next section.</p>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="the-gridfunction">
-<h1>3: The <code class="docutils literal notranslate"><span class="pre">GridFunction</span></code><a class="headerlink" href="#the-gridfunction" title="Permalink to this headline">#</a></h1>
+<section id="the-gridfunction">
+<h2>3: The <code class="docutils literal notranslate"><span class="pre">GridFunction</span></code><a class="headerlink" href="#the-gridfunction" title="Permalink to this headline">#</a></h2>
 <p>No matter the type of data function, we want to be able to use all of these in a discretization scheme without changing the discretization code (e.g., we should be able to pass them all to one of the <code class="docutils literal notranslate"><span class="pre">discretize_...</span></code> functions in <code class="docutils literal notranslate"><span class="pre">discretize_elliptic_cg.py</span></code>).
 As explained in <em>tutorial on continuous Finite Elements for the stationary heat equation</em>, these functions thus need to be localizable w.r.t. a grid.
 While the discrete function <span class="math notranslate nohighlight">\(v_h\)</span> is already associated with a grid (namely the <code class="docutils literal notranslate"><span class="pre">grid</span></code> used to create <code class="docutils literal notranslate"><span class="pre">V_h</span></code>), the analytical functions <span class="math notranslate nohighlight">\(f\)</span>, <span class="math notranslate nohighlight">\(g\)</span> and <span class="math notranslate nohighlight">\(h\)</span> are not, which poses some problems when writing generic discretization schemes.</p>
@@ -443,7 +427,7 @@ While the discrete function <span class="math notranslate nohighlight">\(v_h\)</
 </div>
 <p><strong>Note</strong> that using a Python lambda might not yield be the most efficient code, but it is a great way to quickliy implement data functions.</p>
 <section id="visualizing-grid-functions-in-all-dimension">
-<h2>3.1: visualizing grid functions in all dimension<a class="headerlink" href="#visualizing-grid-functions-in-all-dimension" title="Permalink to this headline">#</a></h2>
+<h3>3.1: visualizing grid functions in all dimension<a class="headerlink" href="#visualizing-grid-functions-in-all-dimension" title="Permalink to this headline">#</a></h3>
 <p>To continue <em>2.2</em>, we can also write any grid function or discrete function to disk.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -489,11 +473,11 @@ For visualization, for instance, we still need to pass an actual <code class="do
 </div>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="interpolation">
-<h1>4: interpolation<a class="headerlink" href="#interpolation" title="Permalink to this headline">#</a></h1>
+<section id="interpolation">
+<h2>4: interpolation<a class="headerlink" href="#interpolation" title="Permalink to this headline">#</a></h2>
 <p>It is often desirable to interpolate data functions in a given discrete function space.</p>
 <section id="using-dune-gdts-interpolation">
-<h2>4.1: using <code class="docutils literal notranslate"><span class="pre">dune-gdt</span></code>s interpolation<a class="headerlink" href="#using-dune-gdts-interpolation" title="Permalink to this headline">#</a></h2>
+<h3>4.1: using <code class="docutils literal notranslate"><span class="pre">dune-gdt</span></code>s interpolation<a class="headerlink" href="#using-dune-gdts-interpolation" title="Permalink to this headline">#</a></h3>
 <p>For most discrete function space, the <code class="docutils literal notranslate"><span class="pre">default_interpolation</span></code> will do the right thing, e.g. perform an <span class="math notranslate nohighlight">\(L^2\)</span>- or Lagrange-Interpolation. There are more specialized interpolations for special cases, e.g. for Raviart-Thomas spaces.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -511,7 +495,7 @@ For visualization, for instance, we still need to pass an actual <code class="do
 </div>
 </section>
 <section id="using-vectorized-python-code">
-<h2>4.2: using vectorized Python code<a class="headerlink" href="#using-vectorized-python-code" title="Permalink to this headline">#</a></h2>
+<h3>4.2: using vectorized Python code<a class="headerlink" href="#using-vectorized-python-code" title="Permalink to this headline">#</a></h3>
 <p>For Lagrangian discrete function spaces the interpolation can be performed by point evaluation.
 We can extract the correct Lagrange-points from the discrete function space and wrap them into a <code class="docutils literal notranslate"><span class="pre">numpy</span></code>-array (without copying them). We can then perform the usual vectorized <code class="docutils literal notranslate"><span class="pre">numpy</span></code> operations and store the result in the DoF-vector of a discrete function (by again wrapping the vector without a copy into a <code class="docutils literal notranslate"><span class="pre">numpy</span></code>-array).</p>
 <div class="cell docutils container">
@@ -533,8 +517,8 @@ We can extract the correct Lagrange-points from the discrete function space and 
 </div>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="performance-considerations">
-<h1>5: performance considerations<a class="headerlink" href="#performance-considerations" title="Permalink to this headline">#</a></h1>
+<section id="performance-considerations">
+<h2>5: performance considerations<a class="headerlink" href="#performance-considerations" title="Permalink to this headline">#</a></h2>
 <p>The way a function is constructed may have a large impact on its performance. Let us consider the function <span class="math notranslate nohighlight">\(h(x) = exp(x_0\,x_1)\)</span> from above.
 We should use a finer grid to obtain some representative timings.</p>
 <p><strong>Note</strong>: by choosing a <code class="docutils literal notranslate"><span class="pre">Simplex</span></code> grid, we obtain an instance of an unstructured <code class="docutils literal notranslate"><span class="pre">dune-alugrid</span></code> grid, which may be runtime efficient, but at the cost of a higher memory footprint.
@@ -581,7 +565,7 @@ Choosing a <code class="docutils literal notranslate"><span class="pre">Cube</sp
 </div>
 </div>
 <section id="interpolation-test">
-<h2>5.1: interpolation test<a class="headerlink" href="#interpolation-test" title="Permalink to this headline">#</a></h2>
+<h3>5.1: interpolation test<a class="headerlink" href="#interpolation-test" title="Permalink to this headline">#</a></h3>
 <p>One measure of performance is the time it takes to interpolate a data function. Note that the comparison greatly depends on the grid and the polynomial order of <code class="docutils literal notranslate"><span class="pre">V_h</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -638,8 +622,8 @@ Choosing a <code class="docutils literal notranslate"><span class="pre">Cube</sp
 </div>
 </section>
 <section id="discretization-test">
-<h2>5.2: discretization test<a class="headerlink" href="#discretization-test" title="Permalink to this headline">#</a></h2>
-<p>For a mor realistic comparison, we use the <code class="docutils literal notranslate"><span class="pre">discretize_elliptic_cg_dirichlet_zero</span></code> function as explained in the <a class="reference internal" href="tutorial-10__cg_stationary_heat_equation_dirichlet.html"><span class="doc std std-doc">tutorial on continuous Finite Elements for the stationary heat equation</span></a>.</p>
+<h3>5.2: discretization test<a class="headerlink" href="#discretization-test" title="Permalink to this headline">#</a></h3>
+<p>For a more realistic comparison, we use the <code class="docutils literal notranslate"><span class="pre">discretize_elliptic_cg_dirichlet_zero</span></code> function as explained in the <a class="reference internal" href="tutorial-10__cg_stationary_heat_equation_dirichlet.html"><span class="doc std std-doc">tutorial on continuous Finite Elements for the stationary heat equation</span></a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">discretize_elliptic_cg</span> <span class="kn">import</span> <span class="n">discretize_elliptic_cg_dirichlet_zero</span>
@@ -689,10 +673,11 @@ Choosing a <code class="docutils literal notranslate"><span class="pre">Cube</sp
 </div>
 </div>
 <p>This test is much more realistic than the pure interpolation one. Since evaluating the diffusion is only a small part of the overall computation, the performance loss using the Python lambda is much smaller.
-Overall, the gain in flexibility outweights the loss in performance (at least for quick tests).</p>
+Overall, the gain in flexibility outweighs the loss in performance (at least for quick tests).</p>
 <p>Download the code:
 <a class="reference download internal" download="" href="_downloads/513ea4feabccf0904f8571a772ee9ea5/tutorial-05__data_functions_and_interpolation.md"><code class="xref download docutils literal notranslate"><span class="pre">tutorial-05__data_functions_and_interpolation.md</span></code></a>
 <a class="reference download internal" download="" href="_downloads/d130a951d69180597ae005242d202273/tutorial-05__data_functions_and_interpolation.ipynb"><code class="xref download myst-nb docutils literal notranslate"><span class="pre">tutorial-05__data_functions_and_interpolation.ipynb</span></code></a></p>
+</section>
 </section>
 </section>
 <script type="application/vnd.jupyter.widget-state+json">
@@ -709,7 +694,7 @@ Overall, the gain in flexibility outweights the loss in performance (at least fo
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Tutorial 10 [WIP]: continuous FEM for the stationary heat equation</div>
+                <div class="title">Tutorial: continuous FEM for the stationary heat equation</div>
               </div>
               <svg><use href="#svg-arrow-right"></use></svg>
             </a>
@@ -734,7 +719,7 @@ Overall, the gain in flexibility outweights the loss in performance (at least fo
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on Feb 17, 2022</div>
+              Last updated on Mar 05, 2022</div>
           </div>
           <div class="right-details">
             <div class="icons">
@@ -757,9 +742,8 @@ Overall, the gain in flexibility outweights the loss in performance (at least fo
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">Tutorial 05 [WIP]: data functions and interpolation</a><ul>
-<li><a class="reference internal" href="#this-is-work-in-progress-wip-still-missing">This is work in progress (WIP), still missing:</a></li>
-<li><a class="reference internal" href="#creating-functions">1: creating functions</a></li>
+<li><a class="reference internal" href="#">Tutorial: data functions and interpolation</a><ul>
+<li><a class="reference internal" href="#creating-functions">1: creating functions</a><ul>
 <li><a class="reference internal" href="#using-the-constantfunction">1.1: using the <code class="docutils literal notranslate"><span class="pre">ConstantFunction</span></code></a></li>
 <li><a class="reference internal" href="#using-the-expressionfunction">1.2: using the <code class="docutils literal notranslate"><span class="pre">ExpressionFunction</span></code></a></li>
 <li><a class="reference internal" href="#discrete-functions">1.3: discrete functions</a></li>
@@ -782,6 +766,8 @@ Overall, the gain in flexibility outweights the loss in performance (at least fo
 <li><a class="reference internal" href="#performance-considerations">5: performance considerations</a><ul>
 <li><a class="reference internal" href="#interpolation-test">5.1: interpolation test</a></li>
 <li><a class="reference internal" href="#discretization-test">5.2: discretization test</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
