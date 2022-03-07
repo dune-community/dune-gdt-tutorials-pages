@@ -18,7 +18,7 @@
 
 <style>
   body {
-    --color-code-background: #eeffcc;
+    --color-code-background: #f8f8f8;
   --color-code-foreground: black;
   
   }
@@ -143,7 +143,12 @@
   <aside class="sidebar-drawer">
     <div class="sidebar-container">
       
-      <div class="sidebar-sticky"><form class="sidebar-search-container" method="get" action="search.html" role="search">
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="#">
+  
+  
+  <span class="sidebar-brand-text">dune-gdt v2021.1.8 Manual</span>
+  
+</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
   <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
   <input type="hidden" name="check_keywords" value="yes">
   <input type="hidden" name="area" value="default">
@@ -202,7 +207,7 @@
 <p><a class="reference external" href="https://zivgitlab.uni-muenster.de/ag-ohlberger/dune-community/dune-gdt">dune-gdt</a> is a software library for building applications using grid-based numerical methods.
 It is a generic discretization toolbox and provides building blocks - like local operators, local evaluations, local assemblers - for discretization methods and suitable discrete function spaces.
 It is realized as a <a class="reference external" href="http://www.dune-project.org/">DUNE</a> module and leverages newer C++ language features and the <a class="reference external" href="https://zivgitlab.uni-muenster.de/ag-ohlberger/dune-community/dune-xt">dune-xt</a>ensions to provide an easy-to-use and mathematically sound API.
-A subset of the API is exposed as Python-bindings using <a class="reference external" href="https://github.com/pybind/pybind11">pybind11</a>.</p>
+A subset of the API is exposed as Python-bindings using <a class="reference external" href="https://github.com/pybind/pybind11">pybind11</a>, and easily available as <a class="reference external" href="https://pypi.org/project/dune-gdt/">wheels on pypi</a>.</p>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a><ul>
