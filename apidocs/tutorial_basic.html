@@ -1,0 +1,175 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Tutorial: &#8212; dune-gdt v2021.1.8 Manual</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Tutorial 05 [WIP]: data functions and interpolation" href="tutorial-05__data_functions_and_interpolation.html" />
+    <link rel="prev" title="dune-gdt Tutorials" href="tutorials.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  
+<div class="admonition">
+<p class="admonition-title">Run this tutorial</p>
+    <a href="https://mybinder.org/v2/gh/dune-community/dune-gdt-tutorials-pages/add-gdt-tutorials-and-examples?filepath=tutorial_basic.ipynb">Click here</a> to run this tutorial on mybinder.org: <a href="https://mybinder.org/v2/gh/dune-community/dune-gdt-tutorials-pages/add-gdt-tutorials-and-examples?filepath=tutorial_basic.ipynb">
+        <img src="https://mybinder.org/badge_logo.svg" alt="try on mybinder.org">
+    </a><br/>
+    <emph>Please note that starting the notebook server may take a couple of minutes.</emph>
+</div>
+    <section class="tex2jax_ignore mathjax_ignore" id="tutorial">
+<h1>Tutorial:<a class="headerlink" href="#tutorial" title="Permalink to this headline">¶</a></h1>
+<p>Some text.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dune.xt</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">dune.gdt</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span> <span class="nn">dune.gdt</span>
+<span class="n">dune</span><span class="o">.</span><span class="n">gdt</span><span class="o">.</span><span class="n">__version__</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;2021.1.8&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Download the code:
+<a class="reference download internal" download="" href="_downloads/2ff5c34f7ae8d6eebf5694e82f975753/tutorial_basic.md"><code class="xref download docutils literal notranslate"><span class="pre">tutorial_basic.md</span></code></a>
+<a class="reference download internal" download="" href="_downloads/4af000901724e2cc8b3d3da837804d69/tutorial_basic.ipynb"><code class="xref download myst-nb docutils literal notranslate"><span class="pre">tutorial_basic.ipynb</span></code></a></p>
+</section>
+
+
+<script type="application/vnd.jupyter.widget-state+json">
+{"state": {"14cb999e6a624c469fbd4e4609586bb9": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "16em", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "auto", "padding": null, "right": null, "top": null, "visibility": null, "width": "100%"}}, "1bdabc356d874eadb5d3817afe40445c": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "DescriptionStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "2610f878fa7149b5963058d9ea02a369": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HTMLModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_9079eafb58dc4511aab99b824f758f13", "placeholder": "\u200b", "style": "IPY_MODEL_1bdabc356d874eadb5d3817afe40445c", "value": ""}}, "33b9e60994f74bc995f356d07ee84bc0": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "AccordionModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "AccordionModel", "_titles": {"0": "Log Output"}, "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "AccordionView", "box_style": "", "children": ["IPY_MODEL_518e765cbf574a58a2b0cda34534eace"], "layout": "IPY_MODEL_bcdfc35641704e7583650f5e57001ce7", "selected_index": null}}, "3e9206b19ee34cb5af039a7afdc23128": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "43fe8007c31b4c77817e11348e493eaa": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "DescriptionStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "518e765cbf574a58a2b0cda34534eace": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HTMLModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_14cb999e6a624c469fbd4e4609586bb9", "placeholder": "\u200b", "style": "IPY_MODEL_43fe8007c31b4c77817e11348e493eaa", "value": ""}}, "63e6d873fb0c4811bfbef53a0f325c0e": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "AccordionModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "AccordionModel", "_titles": {"0": "Log Output"}, "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "AccordionView", "box_style": "", "children": ["IPY_MODEL_2610f878fa7149b5963058d9ea02a369"], "layout": "IPY_MODEL_3e9206b19ee34cb5af039a7afdc23128", "selected_index": null}}, "9079eafb58dc4511aab99b824f758f13": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "16em", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "auto", "padding": null, "right": null, "top": null, "visibility": null, "width": "100%"}}, "bcdfc35641704e7583650f5e57001ce7": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}}, "version_major": 2, "version_minor": 0}
+</script>
+
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">dune-gdt</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="tutorials.html">dune-gdt Tutorials</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Tutorial:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial-05__data_functions_and_interpolation.html">Tutorial 05 [WIP]: data functions and interpolation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial-05__data_functions_and_interpolation.html#visualizing-functions">2: visualizing functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial-05__data_functions_and_interpolation.html#the-gridfunction">3: The <code class="docutils literal notranslate"><span class="pre">GridFunction</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial-05__data_functions_and_interpolation.html#interpolation">4: interpolation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial-05__data_functions_and_interpolation.html#performance-considerations">5: performance considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial-10__cg_stationary_heat_equation_dirichlet.html">Tutorial 10 [WIP]: continuous FEM for the stationary heat equation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial-10__cg_stationary_heat_equation_dirichlet.html#diffusion-with-homogeneous-dirichlet-boundary-condition">1: diffusion with homogeneous Dirichlet boundary condition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial-10__cg_stationary_heat_equation_dirichlet.html#everything-in-a-single-function">1.9: everything in a single function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial-10__cg_stationary_heat_equation_dirichlet.html#diffusion-with-non-homogeneous-dirichlet-boundary-condition">2: diffusion with non-homogeneous Dirichlet boundary condition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial-20__ipdg_stationary_heat_equation_dirichlet.html">Tutorial 20 [WIP]: discontinuous IPDG for the stationary heat equation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial-20__ipdg_stationary_heat_equation_dirichlet.html#everything-in-a-single-function">1.9: everything in a single function</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">dune-gdt Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bibliography.html">Bibliography</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="tutorials.html">dune-gdt Tutorials</a><ul>
+      <li>Previous: <a href="tutorials.html" title="previous chapter">dune-gdt Tutorials</a></li>
+      <li>Next: <a href="tutorial-05__data_functions_and_interpolation.html" title="next chapter">Tutorial 05 [WIP]: data functions and interpolation</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="tutorials.html">dune-gdt Tutorials</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Tutorial:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial-05__data_functions_and_interpolation.html">Tutorial 05 [WIP]: data functions and interpolation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial-05__data_functions_and_interpolation.html#visualizing-functions">2: visualizing functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial-05__data_functions_and_interpolation.html#the-gridfunction">3: The <code class="docutils literal notranslate"><span class="pre">GridFunction</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial-05__data_functions_and_interpolation.html#interpolation">4: interpolation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial-05__data_functions_and_interpolation.html#performance-considerations">5: performance considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial-10__cg_stationary_heat_equation_dirichlet.html">Tutorial 10 [WIP]: continuous FEM for the stationary heat equation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial-10__cg_stationary_heat_equation_dirichlet.html#diffusion-with-homogeneous-dirichlet-boundary-condition">1: diffusion with homogeneous Dirichlet boundary condition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial-10__cg_stationary_heat_equation_dirichlet.html#everything-in-a-single-function">1.9: everything in a single function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial-10__cg_stationary_heat_equation_dirichlet.html#diffusion-with-non-homogeneous-dirichlet-boundary-condition">2: diffusion with non-homogeneous Dirichlet boundary condition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial-20__ipdg_stationary_heat_equation_dirichlet.html">Tutorial 20 [WIP]: discontinuous IPDG for the stationary heat equation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial-20__ipdg_stationary_heat_equation_dirichlet.html#everything-in-a-single-function">1.9: everything in a single function</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">dune-gdt Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bibliography.html">Bibliography</a></li>
+</ul>
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2013-2021 dune-gdt developers and contributors.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>
