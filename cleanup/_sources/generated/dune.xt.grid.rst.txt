@@ -1,0 +1,1877 @@
+dune.xt.grid package
+********************
+
+.. automodule:: dune.xt.grid
+    :show-inheritance:
+
+Submodules
+==========
+
+_grid_boundaryinfo_alldirichlet module
+--------------------------------------
+
+.. automodule:: dune.xt.grid._grid_boundaryinfo_alldirichlet
+    :show-inheritance:
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_boundaryinfo_alldirichlet.AllDirichletBoundaryInfo1dSimplexOnedgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_boundaryinfo_alldirichlet.AllDirichletBoundaryInfo2dCubeYaspgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_boundaryinfo_alldirichlet.AllDirichletBoundaryInfo2dSimplexAluconformgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_boundaryinfo_alldirichlet.AllDirichletBoundaryInfo3dCubeYaspgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_boundaryinfo_alldirichlet.AllDirichletBoundaryInfo3dSimplexAluconformgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+_grid_boundaryinfo_allneumann module
+------------------------------------
+
+.. automodule:: dune.xt.grid._grid_boundaryinfo_allneumann
+    :show-inheritance:
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_boundaryinfo_allneumann.AllNeumannBoundaryInfo1dSimplexOnedgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_boundaryinfo_allneumann.AllNeumannBoundaryInfo2dCubeYaspgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_boundaryinfo_allneumann.AllNeumannBoundaryInfo2dSimplexAluconformgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_boundaryinfo_allneumann.AllNeumannBoundaryInfo3dCubeYaspgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_boundaryinfo_allneumann.AllNeumannBoundaryInfo3dSimplexAluconformgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+_grid_boundaryinfo_allreflecting module
+---------------------------------------
+
+.. automodule:: dune.xt.grid._grid_boundaryinfo_allreflecting
+    :show-inheritance:
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_boundaryinfo_allreflecting.AllReflectingBoundaryInfo1dSimplexOnedgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_boundaryinfo_allreflecting.AllReflectingBoundaryInfo2dCubeYaspgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_boundaryinfo_allreflecting.AllReflectingBoundaryInfo2dSimplexAluconformgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_boundaryinfo_allreflecting.AllReflectingBoundaryInfo3dCubeYaspgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_boundaryinfo_allreflecting.AllReflectingBoundaryInfo3dSimplexAluconformgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+_grid_boundaryinfo_functionbased module
+---------------------------------------
+
+.. automodule:: dune.xt.grid._grid_boundaryinfo_functionbased
+    :show-inheritance:
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_boundaryinfo_functionbased.FunctionBasedBoundaryInfo1dSimplexOnedgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_boundaryinfo_functionbased.FunctionBasedBoundaryInfo2dCubeYaspgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_boundaryinfo_functionbased.FunctionBasedBoundaryInfo2dSimplexAluconformgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_boundaryinfo_functionbased.FunctionBasedBoundaryInfo3dCubeYaspgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_boundaryinfo_functionbased.FunctionBasedBoundaryInfo3dSimplexAluconformgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+_grid_boundaryinfo_interfaces module
+------------------------------------
+
+.. automodule:: dune.xt.grid._grid_boundaryinfo_interfaces
+    :show-inheritance:
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_boundaryinfo_interfaces.BoundaryInfo1dSimplexOnedgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_boundaryinfo_interfaces.BoundaryInfo2dCubeYaspgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_boundaryinfo_interfaces.BoundaryInfo2dSimplexAluconformgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_boundaryinfo_interfaces.BoundaryInfo3dCubeYaspgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_boundaryinfo_interfaces.BoundaryInfo3dSimplexAluconformgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+_grid_boundaryinfo_normalbased module
+-------------------------------------
+
+.. automodule:: dune.xt.grid._grid_boundaryinfo_normalbased
+    :show-inheritance:
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_boundaryinfo_normalbased.NormalBasedBoundaryInfo1dSimplexOnedgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_boundaryinfo_normalbased.NormalBasedBoundaryInfo2dCubeYaspgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_boundaryinfo_normalbased.NormalBasedBoundaryInfo2dSimplexAluconformgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_boundaryinfo_normalbased.NormalBasedBoundaryInfo3dCubeYaspgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_boundaryinfo_normalbased.NormalBasedBoundaryInfo3dSimplexAluconformgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+_grid_boundaryinfo_types module
+-------------------------------
+
+.. automodule:: dune.xt.grid._grid_boundaryinfo_types
+    :show-inheritance:
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_boundaryinfo_types.AbsorbingBoundary
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_boundaryinfo_types.BoundaryType
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_boundaryinfo_types.DirichletBoundary
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_boundaryinfo_types.ImpermeableBoundary
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_boundaryinfo_types.InflowBoundary
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_boundaryinfo_types.InflowOutflowBoundary
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_boundaryinfo_types.NeumannBoundary
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_boundaryinfo_types.NoBoundary
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_boundaryinfo_types.OutflowBoundary
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_boundaryinfo_types.ReflectingBoundary
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_boundaryinfo_types.RobinBoundary
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_boundaryinfo_types.UnknownBoundary
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+_grid_element module
+--------------------
+
+.. automodule:: dune.xt.grid._grid_element
+    :show-inheritance:
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_element.Element1dSimplexOnedgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_element.Element2dCubeYaspgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_element.Element2dSimplexAluconformgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_element.Element3dCubeYaspgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_element.Element3dSimplexAluconformgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+_grid_filters_base module
+-------------------------
+
+.. automodule:: dune.xt.grid._grid_filters_base
+    :show-inheritance:
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_filters_base.ElementFilter1dSimplexOnedgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_filters_base.ElementFilter2dCubeYaspgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_filters_base.ElementFilter2dSimplexAluconformgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_filters_base.ElementFilter3dCubeYaspgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_filters_base.ElementFilter3dSimplexAluconformgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_filters_base.IntersectionFilter1dSimplexOnedgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_filters_base.IntersectionFilter2dCubeYaspgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_filters_base.IntersectionFilter2dSimplexAluconformgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_filters_base.IntersectionFilter3dCubeYaspgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_filters_base.IntersectionFilter3dSimplexAluconformgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+_grid_filters_element module
+----------------------------
+
+.. automodule:: dune.xt.grid._grid_filters_element
+    :show-inheritance:
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_filters_element.ApplyOnAllElements1dSimplexOnedgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_filters_element.ApplyOnAllElements2dCubeYaspgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_filters_element.ApplyOnAllElements2dSimplexAluconformgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_filters_element.ApplyOnAllElements3dCubeYaspgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_filters_element.ApplyOnAllElements3dSimplexAluconformgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_filters_element.ApplyOnBoundaryElements1dSimplexOnedgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_filters_element.ApplyOnBoundaryElements2dCubeYaspgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_filters_element.ApplyOnBoundaryElements2dSimplexAluconformgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_filters_element.ApplyOnBoundaryElements3dCubeYaspgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_filters_element.ApplyOnBoundaryElements3dSimplexAluconformgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_filters_element.ApplyOnNoElements1dSimplexOnedgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_filters_element.ApplyOnNoElements2dCubeYaspgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_filters_element.ApplyOnNoElements2dSimplexAluconformgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_filters_element.ApplyOnNoElements3dCubeYaspgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_filters_element.ApplyOnNoElements3dSimplexAluconformgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+_grid_functors_boundary_detector module
+---------------------------------------
+
+.. automodule:: dune.xt.grid._grid_functors_boundary_detector
+    :show-inheritance:
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_functors_boundary_detector.BoundaryDetectorFunctor1dSimplexOnedgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_functors_boundary_detector.BoundaryDetectorFunctor2dCubeYaspgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_functors_boundary_detector.BoundaryDetectorFunctor2dSimplexAluconformgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_functors_boundary_detector.BoundaryDetectorFunctor3dCubeYaspgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_functors_boundary_detector.BoundaryDetectorFunctor3dSimplexAluconformgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+_grid_functors_interfaces module
+--------------------------------
+
+.. automodule:: dune.xt.grid._grid_functors_interfaces
+    :show-inheritance:
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_functors_interfaces.ElementAndIntersectionFunctor1dSimplexOnedgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_functors_interfaces.ElementAndIntersectionFunctor2dCubeYaspgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_functors_interfaces.ElementAndIntersectionFunctor2dSimplexAluconformgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_functors_interfaces.ElementAndIntersectionFunctor3dCubeYaspgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_functors_interfaces.ElementAndIntersectionFunctor3dSimplexAluconformgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_functors_interfaces.ElementFunctor1dSimplexOnedgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_functors_interfaces.ElementFunctor2dCubeYaspgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_functors_interfaces.ElementFunctor2dSimplexAluconformgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_functors_interfaces.ElementFunctor3dCubeYaspgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_functors_interfaces.ElementFunctor3dSimplexAluconformgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_functors_interfaces.IntersectionFunctor1dSimplexOnedgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_functors_interfaces.IntersectionFunctor2dCubeYaspgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_functors_interfaces.IntersectionFunctor2dSimplexAluconformgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_functors_interfaces.IntersectionFunctor3dCubeYaspgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_functors_interfaces.IntersectionFunctor3dSimplexAluconformgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+_grid_gridprovider_cube module
+------------------------------
+
+.. automodule:: dune.xt.grid._grid_gridprovider_cube
+    :show-inheritance:
+
+_grid_gridprovider_gmsh module
+------------------------------
+
+.. automodule:: dune.xt.grid._grid_gridprovider_gmsh
+    :show-inheritance:
+
+_grid_gridprovider_provider module
+----------------------------------
+
+.. automodule:: dune.xt.grid._grid_gridprovider_provider
+    :show-inheritance:
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_gridprovider_provider.ApplyOnAllIntersections1dSimplexOnedgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_gridprovider_provider.ApplyOnAllIntersections2dCubeYaspgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_gridprovider_provider.ApplyOnAllIntersections2dSimplexAluconformgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_gridprovider_provider.ApplyOnAllIntersections3dCubeYaspgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_gridprovider_provider.ApplyOnAllIntersections3dSimplexAluconformgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_gridprovider_provider.ApplyOnAllIntersectionsOnce1dSimplexOnedgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_gridprovider_provider.ApplyOnAllIntersectionsOnce2dCubeYaspgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_gridprovider_provider.ApplyOnAllIntersectionsOnce2dSimplexAluconformgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_gridprovider_provider.ApplyOnAllIntersectionsOnce3dCubeYaspgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_gridprovider_provider.ApplyOnAllIntersectionsOnce3dSimplexAluconformgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_gridprovider_provider.ApplyOnBoundaryIntersections1dSimplexOnedgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_gridprovider_provider.ApplyOnBoundaryIntersections2dCubeYaspgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_gridprovider_provider.ApplyOnBoundaryIntersections2dSimplexAluconformgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_gridprovider_provider.ApplyOnBoundaryIntersections3dCubeYaspgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_gridprovider_provider.ApplyOnBoundaryIntersections3dSimplexAluconformgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_gridprovider_provider.ApplyOnCustomBoundaryIntersections1dSimplexOnedgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_gridprovider_provider.ApplyOnCustomBoundaryIntersections2dCubeYaspgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_gridprovider_provider.ApplyOnCustomBoundaryIntersections2dSimplexAluconformgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_gridprovider_provider.ApplyOnCustomBoundaryIntersections3dCubeYaspgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_gridprovider_provider.ApplyOnCustomBoundaryIntersections3dSimplexAluconformgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_gridprovider_provider.ApplyOnInnerIntersections1dSimplexOnedgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_gridprovider_provider.ApplyOnInnerIntersections2dCubeYaspgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_gridprovider_provider.ApplyOnInnerIntersections2dSimplexAluconformgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_gridprovider_provider.ApplyOnInnerIntersections3dCubeYaspgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_gridprovider_provider.ApplyOnInnerIntersections3dSimplexAluconformgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_gridprovider_provider.ApplyOnInnerIntersectionsOnce1dSimplexOnedgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_gridprovider_provider.ApplyOnInnerIntersectionsOnce2dCubeYaspgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_gridprovider_provider.ApplyOnInnerIntersectionsOnce2dSimplexAluconformgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_gridprovider_provider.ApplyOnInnerIntersectionsOnce3dCubeYaspgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_gridprovider_provider.ApplyOnInnerIntersectionsOnce3dSimplexAluconformgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_gridprovider_provider.ApplyOnNoIntersections1dSimplexOnedgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_gridprovider_provider.ApplyOnNoIntersections2dCubeYaspgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_gridprovider_provider.ApplyOnNoIntersections2dSimplexAluconformgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_gridprovider_provider.ApplyOnNoIntersections3dCubeYaspgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_gridprovider_provider.ApplyOnNoIntersections3dSimplexAluconformgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_gridprovider_provider.ApplyOnNonPeriodicBoundaryIntersections1dSimplexOnedgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_gridprovider_provider.ApplyOnNonPeriodicBoundaryIntersections2dCubeYaspgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_gridprovider_provider.ApplyOnNonPeriodicBoundaryIntersections2dSimplexAluconformgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_gridprovider_provider.ApplyOnNonPeriodicBoundaryIntersections3dCubeYaspgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_gridprovider_provider.ApplyOnNonPeriodicBoundaryIntersections3dSimplexAluconformgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_gridprovider_provider.ApplyOnPeriodicBoundaryIntersections1dSimplexOnedgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_gridprovider_provider.ApplyOnPeriodicBoundaryIntersections2dCubeYaspgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_gridprovider_provider.ApplyOnPeriodicBoundaryIntersections2dSimplexAluconformgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_gridprovider_provider.ApplyOnPeriodicBoundaryIntersections3dCubeYaspgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_gridprovider_provider.ApplyOnPeriodicBoundaryIntersections3dSimplexAluconformgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_gridprovider_provider.ApplyOnPeriodicBoundaryIntersectionsOnce1dSimplexOnedgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_gridprovider_provider.ApplyOnPeriodicBoundaryIntersectionsOnce2dCubeYaspgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_gridprovider_provider.ApplyOnPeriodicBoundaryIntersectionsOnce2dSimplexAluconformgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_gridprovider_provider.ApplyOnPeriodicBoundaryIntersectionsOnce3dCubeYaspgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_gridprovider_provider.ApplyOnPeriodicBoundaryIntersectionsOnce3dSimplexAluconformgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_gridprovider_provider.ApplyOnProcessIntersections1dSimplexOnedgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_gridprovider_provider.ApplyOnProcessIntersections2dCubeYaspgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_gridprovider_provider.ApplyOnProcessIntersections2dSimplexAluconformgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_gridprovider_provider.ApplyOnProcessIntersections3dCubeYaspgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_gridprovider_provider.ApplyOnProcessIntersections3dSimplexAluconformgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_gridprovider_provider.GridProvider1dSimplexOnedgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_gridprovider_provider.GridProvider2dCubeYaspgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_gridprovider_provider.GridProvider2dSimplexAluconformgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_gridprovider_provider.GridProvider3dCubeYaspgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_gridprovider_provider.GridProvider3dSimplexAluconformgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+_grid_intersection module
+-------------------------
+
+.. automodule:: dune.xt.grid._grid_intersection
+    :show-inheritance:
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_intersection.Intersection1dSimplexOnedgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_intersection.Intersection2dCubeYaspgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_intersection.Intersection2dSimplexAluconformgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_intersection.Intersection3dCubeYaspgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_intersection.Intersection3dSimplexAluconformgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+_grid_traits module
+-------------------
+
+.. automodule:: dune.xt.grid._grid_traits
+    :show-inheritance:
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_traits.Cube
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_traits.Dimension0
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_traits.Dimension1
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_traits.Dimension2
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_traits.Dimension3
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_traits.Dimension4
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_traits.Dimension5
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_traits.Dimension6
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_traits.Dimension7
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_traits.Dimension8
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_traits.Dimension9
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_traits.Prism
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_traits.Pyramid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_traits.Simplex
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+_grid_walker module
+-------------------
+
+.. automodule:: dune.xt.grid._grid_walker
+    :show-inheritance:
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_walker.Walker1dSimplexOnedgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_walker.Walker2dCubeYaspgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_walker.Walker2dSimplexAluconformgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_walker.Walker3dCubeYaspgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.grid._grid_walker.Walker3dSimplexAluconformgrid
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+

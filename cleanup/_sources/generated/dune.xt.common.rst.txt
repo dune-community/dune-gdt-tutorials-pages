@@ -1,0 +1,205 @@
+dune.xt.common package
+**********************
+
+.. automodule:: dune.xt.common
+    :show-inheritance:
+
+Subpackages
+===========
+
+.. toctree::
+    dune.xt.common.vtk
+
+Submodules
+==========
+
+_common_empty module
+--------------------
+
+.. automodule:: dune.xt.common._common_empty
+    :show-inheritance:
+
+---------
+
+
+.. autoclass:: dune.xt.common._common_empty.Dog
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.common._common_empty.Pet
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.common._common_empty.Terrier
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+_common_exceptions module
+-------------------------
+
+.. automodule:: dune.xt.common._common_exceptions
+    :show-inheritance:
+
+---------
+
+
+.. autoclass:: dune.xt.common._common_exceptions.BoostError
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.common._common_exceptions.DuneError
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+_common_mpi module
+------------------
+
+.. automodule:: dune.xt.common._common_mpi
+    :show-inheritance:
+
+---------
+
+
+.. autoclass:: dune.xt.common._common_mpi.CollectiveCommunication
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.common._common_mpi.MPI_Comm_Wrapper
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.common._common_mpi.SequentialCommunication
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+_common_parameter module
+------------------------
+
+.. automodule:: dune.xt.common._common_parameter
+    :show-inheritance:
+
+---------
+
+
+.. autoclass:: dune.xt.common._common_parameter.ParametricInterface
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+_common_timings module
+----------------------
+
+.. automodule:: dune.xt.common._common_timings
+    :show-inheritance:
+
+---------
+
+
+.. autoclass:: dune.xt.common._common_timings.Timings
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+_common_traits module
+---------------------
+
+.. automodule:: dune.xt.common._common_traits
+    :show-inheritance:
+
+---------
+
+
+.. autoclass:: dune.xt.common._common_traits.Double
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+config module
+-------------
+
+.. automodule:: dune.xt.common.config
+    :show-inheritance:
+
+---------
+
+
+.. autoclass:: dune.xt.common.config.Config
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+logging module
+--------------
+
+.. automodule:: dune.xt.common.logging
+    :show-inheritance:
+
+timedlogging module
+-------------------
+
+.. automodule:: dune.xt.common.timedlogging
+    :show-inheritance:
+
+---------
+
+
+.. autoclass:: dune.xt.common.timedlogging.DefaultLogger
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+timings module
+--------------
+
+.. automodule:: dune.xt.common.timings
+    :show-inheritance:
+
