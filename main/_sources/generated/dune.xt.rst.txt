@@ -1,0 +1,67 @@
+dune.xt package
+***************
+
+.. automodule:: dune.xt
+    :show-inheritance:
+
+Subpackages
+===========
+
+.. toctree::
+    dune.xt.common
+    dune.xt.functions
+    dune.xt.grid
+    dune.xt.la
+    dune.xt.test
+
+Submodules
+==========
+
+_version module
+---------------
+
+.. automodule:: dune.xt._version
+    :show-inheritance:
+
+cmake module
+------------
+
+.. automodule:: dune.xt.cmake
+    :show-inheritance:
+
+---------
+
+
+.. autofunction:: dune.xt.cmake.parse_cache
+
+codegen module
+--------------
+
+.. automodule:: dune.xt.codegen
+    :show-inheritance:
+
+---------
+
+
+.. autofunction:: dune.xt.codegen.have_eigen
+
+---------
+
+
+.. autofunction:: dune.xt.codegen.have_istl
+
+---------
+
+
+.. autofunction:: dune.xt.codegen.is_found
+
+---------
+
+
+.. autofunction:: dune.xt.codegen.la_backends
+
+---------
+
+
+.. autofunction:: dune.xt.codegen.typeid_to_typedef_name
+

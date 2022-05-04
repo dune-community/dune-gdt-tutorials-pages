@@ -1,0 +1,201 @@
+dune.xt.la package
+******************
+
+.. automodule:: dune.xt.la
+    :show-inheritance:
+
+Submodules
+==========
+
+_la module
+----------
+
+.. automodule:: dune.xt.la._la
+    :show-inheritance:
+
+---------
+
+
+.. autoclass:: dune.xt.la._la.Backends
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.la._la.CommonDenseMatrix
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.la._la.CommonDenseMatrixSolver
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.la._la.CommonVector
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.la._la.CommonVectorSizeT
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.la._la.EigenDenseMatrixSolver
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.la._la.EigenSparseMatrix
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.la._la.EigenSparseMatrixSolver
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.la._la.EigenVector
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.la._la.IstlSparseMatrix
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.la._la.IstlSparseMatrixSolver
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.la._la.IstlVector
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.la._la.SparsityPatternDefault
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+_la_traits module
+-----------------
+
+.. automodule:: dune.xt.la._la_traits
+    :show-inheritance:
+
+---------
+
+
+.. autoclass:: dune.xt.la._la_traits.Common
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.la._la_traits.Dense
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.la._la_traits.Eigen
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.la._la_traits.Istl
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autoclass:: dune.xt.la._la_traits.Sparse
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
