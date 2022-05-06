@@ -1,0 +1,51 @@
+dune.xt.common.vtk package
+**************************
+
+.. automodule:: dune.xt.common.vtk
+    :show-inheritance:
+
+Submodules
+==========
+
+plot module
+-----------
+
+.. automodule:: dune.xt.common.vtk.plot
+    :show-inheritance:
+
+---------
+
+
+.. autoclass:: dune.xt.common.vtk.plot.VTKPlot
+    :show-inheritance:
+    :members:
+    :special-members:
+    :private-members:
+    :exclude-members: __init__, __weakref__
+
+---------
+
+
+.. autofunction:: dune.xt.common.vtk.plot._transform_to_k3d
+
+---------
+
+
+.. autofunction:: dune.xt.common.vtk.plot.plot
+
+reader module
+-------------
+
+.. automodule:: dune.xt.common.vtk.reader
+    :show-inheritance:
+
+---------
+
+
+.. autofunction:: dune.xt.common.vtk.reader._get_vtk_type
+
+---------
+
+
+.. autofunction:: dune.xt.common.vtk.reader.read_vtkfile
+
